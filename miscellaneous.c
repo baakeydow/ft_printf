@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 03:46:15 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/07 01:05:18 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/08 23:31:28 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,17 @@ int			handle_t_after(t_data *t)
 {
 	int			len_after;
 
-	len_after = ft_strlen(t->after);
+	len_after = 0;
 	if (!percent_nbr(t->after))
 	{
-		ft_putchar('\n');
 		ft_putstr((t->after));
-		ft_putchar('\n');
+		len_after = ft_strlen(t->after);
 	}
 	else
-		ft_putstr(t->after);
+	{
+		ft_putstr(after_t_conv(post_percent(t->after)));
+		len_after = ft_strlen(after_t_conv(post_percent(t->after)));
+	}
 	return (len_after);
 }
 

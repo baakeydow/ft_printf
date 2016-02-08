@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 00:59:47 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/07 00:58:30 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/08 23:28:34 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int					handle_d(va_list conv, t_data *t, char *cpy)
 		return (null_case(t));
 	if (t->ante)
 		len_ante = handle_t_ante(t);
-	t = init(cpy);
 	ft_putnbr(d);
 	if (t->after)
 		len_ante = handle_t_after(t);
