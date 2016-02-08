@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 23:59:43 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/08 08:41:15 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/06 19:45:52 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char					*ante_percent(char *fmt)
 {
-	int				i;
+	int			i;
 
 	i = 0;
 	while (fmt[i] && fmt[i] != '%')
@@ -26,9 +26,9 @@ char					*ante_percent(char *fmt)
 
 char					*post_percent(char *fmt)
 {
-	int				i;
-	char			*str;
-	char			*dup;
+	int			i;
+	char		*str;
+	char		*dup;
 
 	i = 0;
 	dup = ft_strdup(fmt);
@@ -39,7 +39,7 @@ char					*post_percent(char *fmt)
 
 int						double_percent(char *fmt)
 {
-	int				i;
+	int			i;
 
 	i = 0;
 	while (fmt[i])

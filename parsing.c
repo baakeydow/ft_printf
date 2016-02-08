@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 04:10:15 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/08 08:39:22 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/06 19:12:05 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char					*after_t_conv(char *fmt)
 	int			i;
 
 	i = 0;
-	if (fmt[0] == '%')
-		return (post_percent(fmt));
 	while (fmt[i])
 	{
 		if (!is_b_t_conv(fmt, &i))
@@ -67,8 +65,8 @@ t_data					*init(char *cpy)
 	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
 	ptr->p_cent = percent_nbr(cpy);
+	ptr->before = before_t_conv(post_percent(cpy));
 	ptr->ante = ante_percent(cpy);
-	ptr->before = before_t_conv(cpy);
 	ptr->after = after_t_conv(post_percent(cpy));
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
