@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 23:59:43 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/06 19:45:52 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/09 02:26:07 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char					*ante_percent(char *fmt)
 	while (fmt[i] && fmt[i] != '%')
 		i++;
 	if (i == 0)
-		return (NULL);
+		return (fmt);
 	return (ft_strsub(fmt, 0, i));
 }
 
@@ -81,4 +81,15 @@ int						percent_nbr(char *fmt)
 		i++;
 	}
 	return (p);
+}
+
+char					*mv_next_percent(char *i_fmt)
+{
+	char		*mv;
+
+	if (!i_fmt)
+		return (NULL);
+	if (!(mv = ft_strchr(i_fmt , '%')))
+		return (NULL);
+	return (mv);
 }

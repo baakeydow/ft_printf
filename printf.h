@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 06:37:18 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/06 23:46:31 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/09 01:53:11 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct			s_data
 {
+	char				*i_fmt;
 	int					p_cent;
 	char				*ante;
 	char				*before;
@@ -51,6 +52,7 @@ typedef struct			s_conv
 
 int						handle_no_p_cent(char *cpy);
 int						handle_glued(void);
+char					*mv_next_percent(char *i_fmt);
 char					*ante_percent(char *fmt);
 char					*post_percent(char *fmt);
 char					*after_t_conv(char *fmt);
@@ -63,8 +65,8 @@ t_data					*init(char *cpy);
 t_conv					*init_conv(char *cpy);
 int						handle_s(va_list conv, t_data *t, char *cpy);
 int						handle_d(va_list conv, t_data *t, char *cpy);
-int						handle_t_ante(t_data *t);
-int						handle_t_after(t_data *t);
-int						null_case(t_data *t);
+int						handle_ante(char *cpy, t_data *t);
+int						handle_after(char *cpy, t_data *t);
+int						null_case(char *cpy, t_data *t);
 
 #endif
