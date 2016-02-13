@@ -42,15 +42,14 @@ int						ft_printf(const char *restrict format, ...)
 int					main(void)
 {
 	char		*str;
-	/*char		*what;*/
+	char		*what;
 	int			d;
 
 	str = "42";
-	/*what = "what";*/
+	what = "what";
 	d = 24;
-	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
+	ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");
 	/*ft_printf("Wazzup %s cool ? %s ? %d ?\n", str, what, d);*/
-	ft_printf("salut ? %s ? %d ?\n", str, d);
 	/*ft_printf("salut ? %s ? easy ?", str);*/
 	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/
