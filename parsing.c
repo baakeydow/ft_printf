@@ -33,8 +33,6 @@ char					*before_t_conv(char *fmt)
 
 	i = 0;
 	d = 0;
-	if (!(t = post_percent(fmt)))
-		return (NULL);
 	if (!is_b_t_conv(t, &i))
 		return (NULL);
 	while (t[i])
@@ -72,19 +70,19 @@ t_conv					*init_conv(char *cpy)
 
 	if (!(ptr = (t_conv *)malloc(sizeof(t_conv))))
 		return (NULL);
-	ptr->s = return_char(post_percent(cpy), 's');
-	ptr->S = return_char(post_percent(cpy), 'S');
-	ptr->p = return_char(post_percent(cpy), 'p');
-	ptr->d = return_char(post_percent(cpy), 'd');
-	ptr->D = return_char(post_percent(cpy), 'D');
-	ptr->i = return_char(post_percent(cpy), 's');
-	ptr->o = return_char(post_percent(cpy), 's');
-	ptr->O = return_char(post_percent(cpy), 's');
-	ptr->u = return_char(post_percent(cpy), 's');
-	ptr->U = return_char(post_percent(cpy), 's');
-	ptr->x = return_char(post_percent(cpy), 's');
-	ptr->X = return_char(post_percent(cpy), 's');
-	ptr->c = return_char(post_percent(cpy), 's');
-	ptr->C = return_char(post_percent(cpy), 's');
+	ptr->s = return_char(cpy, 's');
+	ptr->S = return_char(cpy, 'S');
+	ptr->p = return_char(cpy, 'p');
+	ptr->d = return_char(cpy, 'd');
+	ptr->D = return_char(cpy, 'D');
+	ptr->i = return_char(cpy, 's');
+	ptr->o = return_char(cpy, 's');
+	ptr->O = return_char(cpy, 's');
+	ptr->u = return_char(cpy, 's');
+	ptr->U = return_char(cpy, 's');
+	ptr->x = return_char(cpy, 's');
+	ptr->X = return_char(cpy, 's');
+	ptr->c = return_char(cpy, 's');
+	ptr->C = return_char(cpy, 's');
 	return (ptr);
 }

@@ -20,7 +20,6 @@ int						ft_printf(const char *restrict format, ...)
 	ret = 0;
 	cpy = ft_strdup(format);
 	t = init(cpy);
-	c = init_conv(cpy);
 	if (!(t->p_cent))
 		return (handle_no_p_cent(cpy));
 	va_start(conv, format);
@@ -31,6 +30,7 @@ int						ft_printf(const char *restrict format, ...)
 			ret += (handle_glued());
 		if (*cpy++ == '%')
 		{
+			c = init_conv(cpy);
 			ret += handle(conv, cpy, t, c);
 			cpy = after_t_conv(cpy);
 		}
@@ -48,8 +48,8 @@ int					main(void)
 	str = "42";
 	what = "what";
 	d = 24;
-	ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");
-	/*ft_printf("Wazzup %s cool ? %s ? %d ?\n", str, what, d);*/
+	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
+	ft_printf("Wazzup %s cool ? %s ? %d ?\n", str, what, d);
 	/*ft_printf("salut ? %s ? easy ?", str);*/
 	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/
