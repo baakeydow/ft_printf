@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 04:10:15 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/09 01:45:51 by bndao            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "printf.h"
 
 int						is_b_t_conv(char *fmt, int *i)
@@ -21,6 +9,20 @@ int						is_b_t_conv(char *fmt, int *i)
 			fmt[*i] == 'c' || fmt[*i] == 'C')
 		return (0);
 	return (1);
+}
+
+char					*after_t_conv(char *fmt)
+{
+	int			i;
+
+	i = 0;
+	while (fmt[i])
+	{
+		if (!is_b_t_conv(fmt, &i))
+			break ;
+		++i;
+	}
+	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 }
 
 char					*before_t_conv(char *fmt)
@@ -44,22 +46,6 @@ char					*before_t_conv(char *fmt)
 	return (ft_strsub(t, 0, d));
 }
 
-char					*after_t_conv(char *fmt)
-{
-	int			i;
-
-	i = 0;
-	while (fmt[i])
-	{
-		if (!is_b_t_conv(fmt, &i))
-			break ;
-		if (fmt[i] == '%')
-			break ;
-		i++;
-	}
-	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
-}
-
 t_data					*init(char *cpy)
 {
 	t_data		*ptr;
@@ -68,9 +54,7 @@ t_data					*init(char *cpy)
 		return (NULL);
 	ptr->i_fmt = ft_strdup(cpy);
 	ptr->p_cent = percent_nbr(cpy);
-	ptr->ante = ante_percent(cpy);
 	ptr->before = before_t_conv(post_percent(cpy));
-	ptr->after = after_t_conv(post_percent(cpy));
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');

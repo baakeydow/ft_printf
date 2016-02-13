@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/02/02 11:00:40 by bndao             #+#    #+#              #
-#    Updated: 2016/02/09 07:36:46 by bndao            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libftprintf.a
 
 SRC = ft_atoi.c
@@ -73,9 +61,7 @@ SRC += ft_lstnew.c
 SRC += ft_strtrim_mod.c
 SRC += ft_strrev.c
 SRC += ft_count_parts.c
-SRC += ft_param_to_tab.c
 SRC += ft_split_whitespaces.c
-SRC += ft_show_tab.c
 
 SRC := $(addprefix libft/, $(SRC))
 
@@ -96,28 +82,28 @@ FLAGS += -Werror
 FLAGS += -Wextra
 
 HEADER = libft.h
-HEADER = printf.h
+HEADER += printf.h
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@echo "\033[1;31mCreating...\033[0m"
+	@echo -e "\033[1;31mCreating...\033[0m"
 	@ar rc $@ $^
-	@echo "\033[1;37mIndexing...\033[0m"
+	@echo -e "\033[1;37mIndexing...\033[0m"
 	@ranlib $@
-	@echo "\033[0;32mlibftprintf.a Created !\033[0m"
+	@echo -e "\033[0;32mlibftprintf.a Created !\033[0m"
 
 %.o:%.c
-	@$(CC) $(FLAGS) -c $< -I $(HEADER) -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 allclean: all clean
 
 clean:
 	@rm -f $(OBJECTS)
-	@echo "\033[1;37m*.o gone abroad\033m"
+	@echo -e "\033[1;37m*.o gone abroad\033m"
 
 fclean:
 	@rm -f $(NAME) $(OBJECTS)
-	@echo "\033[1;35mlibftprintf.a and *.o gone\033[0m"
+	@echo -e "\033[1;35mlibftprintf.a and *.o gone\033[0m"
 
 re: fclean all

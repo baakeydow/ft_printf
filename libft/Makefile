@@ -73,9 +73,7 @@ SRC += ft_lstnew.c
 SRC += ft_strtrim_mod.c
 SRC += ft_strrev.c
 SRC += ft_count_parts.c
-SRC += ft_param_to_tab.c
 SRC += ft_split_whitespaces.c
-SRC += ft_show_tab.c
 
 OBJECTS = $(SRC:.c=.o)
 
@@ -91,7 +89,7 @@ all: $(NAME)
 
 $(NAME):
 	@echo Creating...
-	@$(CC) $(FLAGS) -c $(SRC) -I $(HEADER)
+	@$(CC) $(FLAGS) -c $(SRC) $(HEADER)
 	@ar rc $(NAME) $(OBJECTS)
 	@echo Indexing...
 	@ranlib $(NAME)

@@ -1,36 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   percent.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 23:59:43 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/09 02:26:07 by bndao            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "printf.h"
-
-char					*ante_percent(char *fmt)
-{
-	int			i;
-
-	i = 0;
-	while (fmt[i] && fmt[i] != '%')
-		i++;
-	if (i == 0)
-		return (fmt);
-	return (ft_strsub(fmt, 0, i));
-}
 
 char					*post_percent(char *fmt)
 {
-	int			i;
 	char		*str;
 	char		*dup;
 
-	i = 0;
 	dup = ft_strdup(fmt);
 	if (!(str = ft_strchr(dup, '%')))
 		return(dup);
@@ -81,15 +55,4 @@ int						percent_nbr(char *fmt)
 		i++;
 	}
 	return (p);
-}
-
-char					*mv_next_percent(char *i_fmt)
-{
-	char		*mv;
-
-	if (!i_fmt)
-		return (NULL);
-	if (!(mv = ft_strchr(i_fmt , '%')))
-		return (NULL);
-	return (mv);
 }
