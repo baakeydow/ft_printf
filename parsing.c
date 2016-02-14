@@ -20,6 +20,8 @@ char					*after_t_conv(char *fmt)
 	{
 		if (!is_b_t_conv(fmt, &i))
 			break ;
+		if (fmt[i] == '%')
+			break ;
 		++i;
 	}
 	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));

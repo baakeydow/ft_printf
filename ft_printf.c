@@ -2,6 +2,8 @@
 
 static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 {
+	if (*cpy == '%')
+		return (handle_glued());
 	if (*cpy == c->s)
 		return (handle_s(conv, t, cpy));
 	if (*cpy == c->d)
@@ -26,8 +28,6 @@ int						ft_printf(const char *restrict format, ...)
 	while (*cpy)
 	{
 		ret += printchar(&cpy);
-		if (t->p_cent == 2 && double_percent(cpy))
-			ret += (handle_glued());
 		if (*cpy++ == '%')
 		{
 			c = init_conv(cpy);
@@ -49,7 +49,7 @@ int					main(void)
 	what = "what";
 	d = 24;
 	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
-	ft_printf("Wazzup %s cool ? %s ? %d ?\n", str, what, d);
+	ft_printf("Wazzup %s cool %% ? %s ? %d ?\n", str, what, d);
 	/*ft_printf("salut ? %s ? easy ?", str);*/
 	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/

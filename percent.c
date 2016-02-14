@@ -13,15 +13,8 @@ char					*post_percent(char *fmt)
 
 int						double_percent(char *fmt)
 {
-	int			i;
-
-	i = 0;
-	while (fmt[i])
-	{
-		if (fmt[i] == '%' && fmt[i + 1] == '%')
-			return (1);
-		i++;
-	}
+	if (fmt[0] == '%' && fmt[1] == '%')
+		return (1);
 	return (0);
 }
 
