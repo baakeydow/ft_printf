@@ -46,7 +46,7 @@ int					main(void)
 	int			d;
 
 	str = "42";
-	what = "what";
+	what = NULL;
 	d = 24;
 	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
 	ft_printf("Wazzup %s cool %% ? %s ? %d ?\n", str, what, d);
