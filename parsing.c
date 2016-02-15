@@ -30,20 +30,17 @@ char					*after_t_conv(char *fmt)
 char					*before_t_conv(char *fmt)
 {
 	int			i;
-	int			d;
-	char		*t;
 
 	i = 0;
-	d = 0;
-	if (!is_b_t_conv(t, &i))
+	if (!is_b_t_conv(fmt, &i))
 		return (NULL);
-	while (t[i])
+	while (fmt[i])
 	{
-		if (is_b_t_conv(fmt, &i))
-			d++;
+		if (!is_b_t_conv(fmt, &i))
+			break ;
 		i++;
 	}
-	return (ft_strsub(t, 0, d));
+	return (ft_strsub(fmt, 0, i));
 }
 
 t_data					*init(char *cpy)
@@ -54,13 +51,12 @@ t_data					*init(char *cpy)
 		return (NULL);
 	ptr->i_fmt = ft_strdup(cpy);
 	ptr->p_cent = percent_nbr(cpy);
-	ptr->before = before_t_conv(post_percent(cpy));
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');
 	ptr->o_zero = return_char(before_t_conv(cpy), '0');
 	ptr->o_space = return_char(before_t_conv(cpy), ' ');
-	ptr->width = 0;
+	ptr->width = 4;
 	ptr->precision = 0;
 	ptr->length = "0";
 	return (ptr);
@@ -72,6 +68,7 @@ t_conv					*init_conv(char *cpy)
 
 	if (!(ptr = (t_conv *)malloc(sizeof(t_conv))))
 		return (NULL);
+	ptr->b_t_conv = before_t_conv(cpy);
 	ptr->s = return_char(cpy, 's');
 	ptr->S = return_char(cpy, 'S');
 	ptr->p = return_char(cpy, 'p');

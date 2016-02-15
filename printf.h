@@ -7,7 +7,6 @@ typedef struct	s_data
 {
 	char		*i_fmt;
 	int			p_cent;
-	char		*before;
 	char		o_minus;
 	char		o_plus;
 	char		o_diez;
@@ -20,6 +19,7 @@ typedef struct	s_data
 
 typedef struct	s_conv
 {
+	char		*b_t_conv;
 	char		s;
 	char		S;
 	char		p;

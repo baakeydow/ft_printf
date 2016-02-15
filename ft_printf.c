@@ -31,8 +31,15 @@ int						ft_printf(const char *restrict format, ...)
 		if (*cpy++ == '%')
 		{
 			c = init_conv(cpy);
+			if (c->b_t_conv)
+			{
+				ft_putendl("=========");
+				ft_putendl(c->b_t_conv);
+				ft_putendl("=========");
+			}
 			ret += handle(conv, cpy, t, c);
 			cpy = after_t_conv(cpy);
+			free(c);
 		}
 	}
 	va_end(conv);
@@ -49,8 +56,8 @@ int					main(void)
 	what = NULL;
 	d = 24;
 	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
-	ft_printf("Wazzup %s cool %% ? %s ? %d ?\n", str, what, d);
-	/*ft_printf("salut ? %s ? easy ?", str);*/
+	/*ft_printf("Wazzup %s cool %% ? %----s ? %d ?\n", str, what, d);*/
+	ft_printf("Wazzup ?%-----s? easy ?", str);
 	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/
