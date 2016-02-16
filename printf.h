@@ -36,22 +36,20 @@ typedef struct	s_conv
 
 int				handle_no_p_cent(char *cpy);
 int				handle_glued(void);
-char			*post_percent(char *fmt);
 int				percent_nbr(char *fmt);
-int				double_percent(char *fmt);
-char			*before_t_conv(char *fmt);
-char			*after_t_conv(char *fmt);
-int				is_b_t_conv(char *fmt, int *i);
-char			return_char(char *fmt, char c);
 t_data			*init(char *cpy);
 t_data			*wipe_data(void);
 t_conv			*init_conv(char *cpy);
 t_conv			*wipe_conv(void);
-int				handle_s(va_list conv, t_data *t, char *cpy);
-int				handle_d(va_list conv, t_data *t, char *cpy);
+char			*before_t_conv(char *fmt);
+char			*after_t_conv(char *fmt);
+int				is_b_t_conv(char *fmt, int *i);
+char			return_char(char *fmt, char c);
 int				null_case(void);
 int				printchar(char **cpy);
 char			*get(char *fmt);
-int				towork(va_list conv, t_data *t, char *cpy, t_conv *c);
+int				handle_fmt(va_list conv, char *cpy, t_data *t, t_conv *c);
+int				handle_s(va_list conv);
+int				handle_d(va_list conv);
 
 #endif

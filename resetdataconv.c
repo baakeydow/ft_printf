@@ -40,3 +40,24 @@ t_conv				*wipe_conv(void)
 	ptr->C = '\0';
 	return (ptr);
 }
+
+int				handle_glued(void)
+{
+	ft_putchar('%');
+	return (1);
+}
+
+int				null_case(void)
+{
+	ft_putstr("(null)");
+	return (6);
+}
+
+char			*get(char *fmt)
+{
+	char *dup;
+
+	dup = ft_strdup(fmt);
+	dup[1] = '\0';
+	return (dup);
+}

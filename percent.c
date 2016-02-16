@@ -1,23 +1,5 @@
 #include "printf.h"
 
-char					*post_percent(char *fmt)
-{
-	char		*str;
-	char		*dup;
-
-	dup = ft_strdup(fmt);
-	if (!(str = ft_strchr(dup, '%')))
-		return(dup);
-	return (str + 1);
-}
-
-int						double_percent(char *fmt)
-{
-	if (fmt[0] == '%' && fmt[1] == '%')
-		return (1);
-	return (0);
-}
-
 char					return_char(char *fmt, char c)
 {
 	int				i;

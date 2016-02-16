@@ -68,8 +68,8 @@ SRC := $(addprefix libft/, $(SRC))
 PTF = ft_printf.c
 PTF += percent.c
 PTF += parsing.c
-PTF += conv_s.c
-PTF += conv_d.c
+PTF += handle_conv.c
+PTF += conv.c
 PTF += miscellaneous.c
 PTF += resetdataconv.c
 

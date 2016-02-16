@@ -5,11 +5,11 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 	if (*cpy == '%')
 		return (handle_glued());
 	if (*cpy == c->s)
-		return (handle_s(conv, t, cpy));
+		return (handle_s(conv));
 	if (*cpy == c->d)
-		return (handle_d(conv, t, cpy));
+		return (handle_d(conv));
 	if (c->b_t_conv)
-		return (towork(conv, t, cpy, c));
+		return (handle_fmt(conv, cpy, t, c));
 	return (0);
 }
 
@@ -46,16 +46,11 @@ int						ft_printf(const char *restrict format, ...)
 int					main(void)
 {
 	char		*str;
-	char		*what;
 	int			d;
 
 	str = "42";
-	what = NULL;
 	d = 24;
-	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
-	/*ft_printf("Wazzup %s cool %% ? %----s ? %d ?\n", str, what, d);*/
 	ft_printf("Wazzup ? cool %s easy %-4d?", str, d);
-	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/
 	return (0);
