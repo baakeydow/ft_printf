@@ -8,6 +8,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_s(conv, t, cpy));
 	if (*cpy == c->d)
 		return (handle_d(conv, t, cpy));
+	if (c->b_t_conv)
+		return (towork(conv, t, cpy, c));
 	return (0);
 }
 
@@ -21,8 +23,7 @@ int						ft_printf(const char *restrict format, ...)
 
 	ret = 0;
 	cpy = ft_strdup(format);
-	t = init(cpy);
-	if (!(t->p_cent))
+	if (!(percent_nbr(cpy)))
 		return (handle_no_p_cent(cpy));
 	va_start(conv, format);
 	while (*cpy)
@@ -30,16 +31,12 @@ int						ft_printf(const char *restrict format, ...)
 		ret += printchar(&cpy);
 		if (*cpy++ == '%')
 		{
+			t = init(cpy);
 			c = init_conv(cpy);
-			if (c->b_t_conv)
-			{
-				ft_putendl("=========");
-				ft_putendl(c->b_t_conv);
-				ft_putendl("=========");
-			}
 			ret += handle(conv, cpy, t, c);
 			cpy = after_t_conv(cpy);
 			free(c);
+			free(t);
 		}
 	}
 	va_end(conv);
@@ -57,7 +54,7 @@ int					main(void)
 	d = 24;
 	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
 	/*ft_printf("Wazzup %s cool %% ? %----s ? %d ?\n", str, what, d);*/
-	ft_printf("Wazzup ?%-----s? easy ?", str);
+	ft_printf("Wazzup ? cool %-s easy ?", str);
 	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/

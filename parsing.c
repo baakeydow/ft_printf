@@ -33,14 +33,14 @@ char					*before_t_conv(char *fmt)
 
 	i = 0;
 	if (!is_b_t_conv(fmt, &i))
-		return (NULL);
+		return (get(fmt));
 	while (fmt[i])
 	{
 		if (!is_b_t_conv(fmt, &i))
 			break ;
 		i++;
 	}
-	return (ft_strsub(fmt, 0, i));
+	return (ft_strsub(fmt, 0, i + 1));
 }
 
 t_data					*init(char *cpy)
@@ -50,7 +50,6 @@ t_data					*init(char *cpy)
 	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
 	ptr->i_fmt = ft_strdup(cpy);
-	ptr->p_cent = percent_nbr(cpy);
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');
@@ -69,19 +68,19 @@ t_conv					*init_conv(char *cpy)
 	if (!(ptr = (t_conv *)malloc(sizeof(t_conv))))
 		return (NULL);
 	ptr->b_t_conv = before_t_conv(cpy);
-	ptr->s = return_char(cpy, 's');
-	ptr->S = return_char(cpy, 'S');
-	ptr->p = return_char(cpy, 'p');
-	ptr->d = return_char(cpy, 'd');
-	ptr->D = return_char(cpy, 'D');
-	ptr->i = return_char(cpy, 's');
-	ptr->o = return_char(cpy, 's');
-	ptr->O = return_char(cpy, 's');
-	ptr->u = return_char(cpy, 's');
-	ptr->U = return_char(cpy, 's');
-	ptr->x = return_char(cpy, 's');
-	ptr->X = return_char(cpy, 's');
-	ptr->c = return_char(cpy, 's');
-	ptr->C = return_char(cpy, 's');
+	ptr->s = return_char(before_t_conv(cpy), 's');
+	ptr->S = return_char(before_t_conv(cpy), 'S');
+	ptr->p = return_char(before_t_conv(cpy), 'p');
+	ptr->d = return_char(before_t_conv(cpy), 'd');
+	ptr->D = return_char(before_t_conv(cpy), 'D');
+	ptr->i = return_char(before_t_conv(cpy), 'i');
+	ptr->o = return_char(before_t_conv(cpy), 'o');
+	ptr->O = return_char(before_t_conv(cpy), 'O');
+	ptr->u = return_char(before_t_conv(cpy), 'u');
+	ptr->U = return_char(before_t_conv(cpy), 'U');
+	ptr->x = return_char(before_t_conv(cpy), 'x');
+	ptr->X = return_char(before_t_conv(cpy), 'X');
+	ptr->c = return_char(before_t_conv(cpy), 'c');
+	ptr->C = return_char(before_t_conv(cpy), 'C');
 	return (ptr);
 }

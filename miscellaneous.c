@@ -25,3 +25,18 @@ int				null_case(void)
 	ft_putstr("(null)");
 	return (6);
 }
+
+char			*get(char *fmt)
+{
+	char *dup;
+
+	dup = ft_strdup(fmt);
+	dup[1] = '\0';
+	return (dup);
+}
+
+int				towork(va_list conv, t_data *t, char *cpy, t_conv *c)
+{
+	ft_putstr(c->b_t_conv);
+	return (ft_strlen(c->b_t_conv));
+}

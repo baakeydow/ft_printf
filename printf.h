@@ -6,7 +6,6 @@
 typedef struct	s_data
 {
 	char		*i_fmt;
-	int			p_cent;
 	char		o_minus;
 	char		o_plus;
 	char		o_diez;
@@ -51,5 +50,7 @@ int				handle_s(va_list conv, t_data *t, char *cpy);
 int				handle_d(va_list conv, t_data *t, char *cpy);
 int				null_case(void);
 int				printchar(char **cpy);
+char			*get(char *fmt);
+int				towork(va_list conv, t_data *t, char *cpy, t_conv *c);
 
 #endif
