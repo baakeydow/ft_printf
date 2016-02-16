@@ -35,8 +35,8 @@ int						ft_printf(const char *restrict format, ...)
 			c = init_conv(cpy);
 			ret += handle(conv, cpy, t, c);
 			cpy = after_t_conv(cpy);
-			free(c);
-			free(t);
+			c = wipe_conv();
+			t = wipe_data();
 		}
 	}
 	va_end(conv);
@@ -54,7 +54,7 @@ int					main(void)
 	d = 24;
 	/*ft_putstr("Wazzup 42 cool ? what ? 24 ?\n");*/
 	/*ft_printf("Wazzup %s cool %% ? %----s ? %d ?\n", str, what, d);*/
-	ft_printf("Wazzup ? cool %-s easy ?", str);
+	ft_printf("Wazzup ? cool %s easy %-4d?", str, d);
 	/*ft_printf("Salut -|%s|- ? -|%s|- ?\n", str, what);*/
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/

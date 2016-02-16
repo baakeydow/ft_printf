@@ -37,6 +37,8 @@ char			*get(char *fmt)
 
 int				towork(va_list conv, t_data *t, char *cpy, t_conv *c)
 {
-	ft_putstr(c->b_t_conv);
+	ft_putchar(t->o_minus);
+	ft_putnbr(t->width);
+	ft_putchar(c->d);
 	return (ft_strlen(c->b_t_conv));
 }

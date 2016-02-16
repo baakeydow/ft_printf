@@ -1,0 +1,42 @@
+#include "printf.h"
+
+t_data				*wipe_data(void)
+{
+	t_data		*ptr;
+
+	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
+		return (NULL);
+	ptr->o_minus ='\0';
+	ptr->o_plus = '\0';
+	ptr->o_diez = '\0';
+	ptr->o_zero = '\0';
+	ptr->o_space = '\0';
+	ptr->width = 0;
+	ptr->precision = 0;
+	ptr->length = NULL;
+	return (ptr);
+}
+
+t_conv				*wipe_conv(void)
+{
+	t_conv		*ptr;
+
+	if (!(ptr = (t_conv *)malloc(sizeof(t_conv))))
+		return (NULL);
+	ptr->b_t_conv = NULL;
+	ptr->s = '\0';
+	ptr->S = '\0';
+	ptr->p = '\0';
+	ptr->d = '\0';
+	ptr->D = '\0';
+	ptr->i = '\0';
+	ptr->o = '\0';
+	ptr->O = '\0';
+	ptr->u = '\0';
+	ptr->U = '\0';
+	ptr->x = '\0';
+	ptr->X = '\0';
+	ptr->c = '\0';
+	ptr->C = '\0';
+	return (ptr);
+}

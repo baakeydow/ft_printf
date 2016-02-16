@@ -5,7 +5,6 @@
 
 typedef struct	s_data
 {
-	char		*i_fmt;
 	char		o_minus;
 	char		o_plus;
 	char		o_diez;
@@ -45,7 +44,9 @@ char			*after_t_conv(char *fmt);
 int				is_b_t_conv(char *fmt, int *i);
 char			return_char(char *fmt, char c);
 t_data			*init(char *cpy);
+t_data			*wipe_data(void);
 t_conv			*init_conv(char *cpy);
+t_conv			*wipe_conv(void);
 int				handle_s(va_list conv, t_data *t, char *cpy);
 int				handle_d(va_list conv, t_data *t, char *cpy);
 int				null_case(void);

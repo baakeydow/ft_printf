@@ -49,7 +49,6 @@ t_data					*init(char *cpy)
 
 	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
-	ptr->i_fmt = ft_strdup(cpy);
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');

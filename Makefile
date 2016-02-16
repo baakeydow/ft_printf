@@ -71,6 +71,7 @@ PTF += parsing.c
 PTF += conv_s.c
 PTF += conv_d.c
 PTF += miscellaneous.c
+PTF += resetdataconv.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJECTS += $(PTF:.c=.o)
