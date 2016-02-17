@@ -16,25 +16,23 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 int						ft_printf(const char *restrict format, ...)
 {
 	va_list		conv;
-	char		*cpy;
 	t_data		*t;
 	t_conv		*c;
 	int			ret;
 
 	ret = 0;
-	cpy = ft_strdup(format);
-	if (!(percent_nbr(cpy)))
-		return (handle_no_p_cent(cpy));
+	if (!(percent_nbr(format)))
+		return (handle_no_p_cent(format));
 	va_start(conv, format);
-	while (*cpy)
+	while (*format)
 	{
-		ret += printchar(&cpy);
-		if (*cpy++ == '%')
+		ret += printchar((const char **)&format);
+		if (*format++ == '%')
 		{
-			t = init(cpy);
-			c = init_conv(cpy);
-			ret += handle(conv, cpy, t, c);
-			cpy = after_t_conv(cpy);
+			t = init(format);
+			c = init_conv(format);
+			ret += handle(conv, (char *)format, t, c);
+			format = after_t_conv(format);
 			c = wipe_conv();
 			t = wipe_data();
 		}

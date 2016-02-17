@@ -1,6 +1,6 @@
 #include "printf.h"
 
-char					return_char(char *fmt, char c)
+char					return_char(const char *fmt, char c)
 {
 	int				i;
 
@@ -16,7 +16,7 @@ char					return_char(char *fmt, char c)
 	return (0);
 }
 
-int						percent_nbr(char *fmt)
+int						percent_nbr(const char *fmt)
 {
 	size_t			i;
 	int				p;

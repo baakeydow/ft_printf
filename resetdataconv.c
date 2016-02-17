@@ -53,7 +53,7 @@ int				null_case(void)
 	return (6);
 }
 
-char			*get(char *fmt)
+char			*get(const char *fmt)
 {
 	char *dup;
 

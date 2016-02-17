@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int				printchar(char **cpy)
+int				printchar(const char **cpy)
 {
 	if (**cpy == '%')
 		return (0);
@@ -8,7 +8,7 @@ int				printchar(char **cpy)
 	return (1);
 }
 
-int				handle_no_p_cent(char *cpy)
+int				handle_no_p_cent(const char *cpy)
 {
 	ft_putstr(cpy);
 	return (ft_strlen(cpy));

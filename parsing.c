@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int						is_b_t_conv(char *fmt, int *i)
+int						is_b_t_conv(const char *fmt, int *i)
 {
 	if (fmt[*i] == 's' || fmt[*i] == 'S' || fmt[*i] == 'p' ||
 			fmt[*i] == 'd' || fmt[*i] == 'D' || fmt[*i] == 'i' ||
@@ -11,7 +11,7 @@ int						is_b_t_conv(char *fmt, int *i)
 	return (1);
 }
 
-char					*after_t_conv(char *fmt)
+char					*after_t_conv(const char *fmt)
 {
 	int			i;
 
@@ -27,7 +27,7 @@ char					*after_t_conv(char *fmt)
 	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 }
 
-char					*before_t_conv(char *fmt)
+char					*before_t_conv(const char *fmt)
 {
 	int			i;
 
@@ -43,7 +43,7 @@ char					*before_t_conv(char *fmt)
 	return (ft_strsub(fmt, 0, i + 1));
 }
 
-t_data					*init(char *cpy)
+t_data					*init(const char *cpy)
 {
 	t_data		*ptr;
 
@@ -60,7 +60,7 @@ t_data					*init(char *cpy)
 	return (ptr);
 }
 
-t_conv					*init_conv(char *cpy)
+t_conv					*init_conv(const char *cpy)
 {
 	t_conv		*ptr;
 
