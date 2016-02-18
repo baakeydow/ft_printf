@@ -4,12 +4,10 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 {
 	if (*cpy == '%')
 		return (handle_glued());
-	if (*cpy == c->s)
+	if (c->s)
 		return (handle_s(conv));
-	if (*cpy == c->d)
-		return (handle_d(conv));
-	if (c->b_t_conv)
-		return (handle_fmt(conv, cpy, t, c));
+	if (c->d)
+		return (handle_d(conv, t));
 	return (0);
 }
 
@@ -46,9 +44,9 @@ int					main(void)
 	char		*str;
 	int			d;
 
-	str = "42";
-	d = 24;
-	ft_printf("Wazzup ? cool %s easy %-4d?", str, d);
+	str = "24";
+	d = 42;
+	ft_printf("Wazzup ? cool %s easy %+-4d?", str, d);
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/
 	return (0);

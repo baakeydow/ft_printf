@@ -31,3 +31,20 @@ int						percent_nbr(const char *fmt)
 	}
 	return (p);
 }
+
+int						find_width(char *str)
+{
+	int				i;
+	int				start;
+
+	i = 0;
+	start = 0;
+	if (!str)
+		return (0);
+	while (!(ft_isdigit(str[i])))
+		i++;
+	start = i;
+	while (ft_isdigit(str[i]))
+		i++;
+	return (ft_atoi(ft_strsub(str, start, i)));
+}

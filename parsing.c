@@ -54,7 +54,7 @@ t_data					*init(const char *cpy)
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');
 	ptr->o_zero = return_char(before_t_conv(cpy), '0');
 	ptr->o_space = return_char(before_t_conv(cpy), ' ');
-	ptr->width = 4;
+	ptr->width = find_width(before_t_conv(cpy));
 	ptr->precision = 0;
 	ptr->length = "0";
 	return (ptr);

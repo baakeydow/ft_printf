@@ -1,6 +1,16 @@
 #include "printf.h"
 
-int		handle_fmt(va_list conv, char *cpy, t_data *t, t_conv *c)
+int						handle_width(int len_conv, t_data *t)
 {
-	return (t->width + handle_d(conv) + ft_strlen(c->b_t_conv) + ft_strlen(cpy));
+	int			i;
+
+	i = t->width - len_conv;
+	if (i <= 0)
+		return (0);
+	while (i)
+	{
+		ft_putchar(' ');
+		i--;
+	}
+	return (t->width - len_conv);
 }

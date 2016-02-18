@@ -48,8 +48,9 @@ char			return_char(const char *fmt, char c);
 int				null_case(void);
 int				printchar(const char **cpy);
 char			*get(const char *fmt);
-int				handle_fmt(va_list conv, char *cpy, t_data *t, t_conv *c);
+int				handle_width(int len_conv, t_data *t);
 int				handle_s(va_list conv);
-int				handle_d(va_list conv);
+int				handle_d(va_list conv, t_data *t);
+int				find_width(char *str);
 
 #endif
