@@ -6,13 +6,13 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/21 20:56:39 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/21 22:30:54 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char					return_char(const char *fmt, char c)
+char					return_char(char *fmt, char c)
 {
 	int				i;
 
@@ -55,6 +55,8 @@ int						find_width(char *str)
 		return (0);
 	while (!(ft_isdigit(str[i])))
 		i++;
+	if (!str[i])
+		return(0);
 	start = i;
 	while (ft_isdigit(str[i]))
 		i++;

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/21 20:56:28 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/21 22:22:50 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,20 @@ int					handle_d(va_list conv, t_data *t)
 	ret += ft_strlen(ft_itoa(d));
 	if (t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa(d)), t);
+	return (ret);
+}
+
+int					handle_c(va_list conv, t_data *t)
+{
+	int			c;
+	int			ret;
+
+	ret = 0;
+	if (!(c = va_arg(conv, int)))
+		return (null_case());
+	ft_putchar(c);
+	ret += 1;
+	if (t->o_minus && t->width)
+		ret += handle_width(1, t);
 	return (ret);
 }

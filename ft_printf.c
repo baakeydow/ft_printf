@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/21 20:56:33 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/21 22:23:04 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_s(conv));
 	if (c->d)
 		return (handle_d(conv, t));
+	if (c->c)
+		return (handle_c(conv, t));
 	return (0);
 }
 
@@ -55,11 +57,14 @@ int					main(void)
 {
 	char		*str;
 	int			d;
+	int			c;
 
 	str = "24";
 	d = 24;
-	ft_printf("Wazzup ? cool %s easy %+-4d?\n", str, d);
+	c = 'c';
+	/*ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);*/
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/
+	ft_printf("%c", c);
 	return (0);
 }
