@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
+/*   Updated: 2016/02/21 20:56:33 by bndao            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
@@ -45,8 +57,8 @@ int					main(void)
 	int			d;
 
 	str = "24";
-	d = 42;
-	ft_printf("Wazzup ? cool %s easy %+-4d?", str, d);
+	d = 24;
+	ft_printf("Wazzup ? cool %s easy %+-4d?\n", str, d);
 	/*ft_printf("%s", str);*/
 	/*ft_printf("%d", d);*/
 	return (0);
