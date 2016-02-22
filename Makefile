@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/21 20:55:31 by bndao             #+#    #+#              #
-#    Updated: 2016/02/21 20:55:34 by bndao            ###   ########.fr        #
+#    Updated: 2016/02/22 13:06:05 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,11 +100,11 @@ HEADER += printf.h
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@echo -e "\033[1;31mCreating...\033[0m"
+	@echo "\033[1;31mCreating...\033[0m"
 	@ar rc $@ $^
-	@echo -e "\033[1;37mIndexing...\033[0m"
+	@echo "\033[1;37mIndexing...\033[0m"
 	@ranlib $@
-	@echo -e "\033[0;32mlibftprintf.a Created !\033[0m"
+	@echo "\033[0;32mLibftprintf.a Created !\033[0m"
 
 %.o:%.c
 	@$(CC) $(FLAGS) -c $< -o $@
@@ -113,10 +113,10 @@ allclean: all clean
 
 clean:
 	@rm -f $(OBJECTS)
-	@echo -e "\033[1;37m*.o gone abroad\033m"
+	@echo "\033[1;37m*.o gone abroad\033m"
 
 fclean:
 	@rm -f $(NAME) $(OBJECTS)
-	@echo -e "\033[1;35mlibftprintf.a and *.o gone\033[0m"
+	@echo "\033[1;36mlibftprintf.a and *.o gone\033[0m"
 
 re: fclean all

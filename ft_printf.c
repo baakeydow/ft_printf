@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/21 22:23:04 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/22 12:51:28 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ int						ft_printf(const char *restrict format, ...)
 	return (ret);
 }
 
-int					main(void)
-{
-	char		*str;
-	int			d;
-	int			c;
+/*int					main(void)*/
+/*{*/
+	/*char		*str;*/
+	/*int			d;*/
+	/*int			c;*/
 
-	str = "24";
-	d = 24;
-	c = 'c';
-	/*ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);*/
-	/*ft_printf("%s", str);*/
-	/*ft_printf("%d", d);*/
-	ft_printf("%c", c);
-	return (0);
-}
+	/*str = "24";*/
+	/*d = 24;*/
+	/*c = 'c';*/
+	/*[>ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
+	/*[>ft_printf("%s", str);<]*/
+	/*[>ft_printf("%d", d);<]*/
+	/*ft_printf("%c", c);*/
+	/*return (0);*/
+/*}*/

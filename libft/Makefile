@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 18:28:37 by bndao             #+#    #+#              #
-#    Updated: 2016/01/04 17:20:26 by bndao            ###   ########.fr        #
+#    Updated: 2016/02/22 13:04:36 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,21 +88,21 @@ HEADER = libft.h
 all: $(NAME)
 
 $(NAME):
-	@echo Creating...
+	@echo "\033[1;35mCreating...\033[0m"
 	@$(CC) $(FLAGS) -c $(SRC) $(HEADER)
 	@ar rc $(NAME) $(OBJECTS)
-	@echo Indexing...
+	@echo "\033[1;38mIndexing...\033[0m"
 	@ranlib $(NAME)
-	@echo Libft Created !
+	@echo "\033[3;34mLibft.a Created !\033[0m"
 
 allclean: all clean
 
 clean:
 	@rm -f $(OBJECTS)
-	@echo *.o gone
+	@echo *.o gone"\033[1;37m*.o gone !\033[0m"
 
 fclean:
 	@rm -f $(NAME) $(OBJECTS)
-	@echo libt.a and *.o gone
+	@echo libt.a and *.o gone"\033[2;37mLibft.a && *.o gone abroad \033[0m"
 
 re: fclean all
