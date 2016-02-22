@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/22 12:51:28 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/22 14:53:32 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
 	/*[>ft_printf("%s", str);<]*/
 	/*[>ft_printf("%d", d);<]*/
-	/*ft_printf("%c", c);*/
+	/*ft_printf("{%3c}", 0);*/
 	/*return (0);*/
 /*}*/
