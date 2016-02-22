@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/22 14:53:10 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/22 17:02:06 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,9 @@ int					handle_c(va_list conv, t_data *t)
 	if (t->o_minus && t->width)
 		ret += handle_width(1, t);
 	return (ret);
+}
+
+int					handle_x(va_list conv, t_data *t)
+{
+	
 }

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:55 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/21 22:22:47 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/22 16:00:01 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int				printchar(const char **cpy)
 
 int				handle_no_p_cent(const char *cpy)
 {
+	if (!cpy)
+		return (-1);
 	ft_putstr(cpy);
 	return (ft_strlen(cpy));
 }

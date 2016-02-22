@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/21 22:22:51 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/22 17:02:13 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ char			return_char(char *fmt, char c);
 int				null_case(void);
 int				printchar(const char **cpy);
 char			*get(const char *fmt);
+int				find_width(char *str);
 int				handle_width(int len_conv, t_data *t);
 int				handle_s(va_list conv);
 int				handle_d(va_list conv, t_data *t);
 int				handle_c(va_list conv, t_data *t);
-int				find_width(char *str);
+int				handle_x(va_list conv, t_data *t);
 
 #endif

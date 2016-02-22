@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/22 14:53:32 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/22 17:02:22 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_d(conv, t));
 	if (c->c)
 		return (handle_c(conv, t));
+	if (c->p)
+		return (handle_x(conv, t));
 	return (0);
 }
 
@@ -33,7 +35,7 @@ int						ft_printf(const char *restrict format, ...)
 	int			ret;
 
 	ret = 0;
-	if (!(percent_nbr(format)))
+	if (percent_nbr(format) == 0 || percent_nbr(format) == -1)
 		return (handle_no_p_cent(format));
 	va_start(conv, format);
 	while (*format)
@@ -53,18 +55,18 @@ int						ft_printf(const char *restrict format, ...)
 	return (ret);
 }
 
-/*int					main(void)*/
-/*{*/
-	/*char		*str;*/
-	/*int			d;*/
-	/*int			c;*/
+int					main(void)
+{
+	char		*str;
+	int			d;
+	int			c;
 
-	/*str = "24";*/
-	/*d = 24;*/
-	/*c = 'c';*/
-	/*[>ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
-	/*[>ft_printf("%s", str);<]*/
-	/*[>ft_printf("%d", d);<]*/
-	/*ft_printf("{%3c}", 0);*/
-	/*return (0);*/
-/*}*/
+	str = "24";
+	d = 42;
+	c = 'c';
+	/*ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);*/
+	/*ft_printf("%s", str);*/
+	/*ft_printf("%d", d);*/
+	/*ft_printf("{%3c}", c);*/
+	return (0);
+}
