@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/22 17:02:13 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/23 00:57:01 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_conv
 	char		C;
 }				t_conv;
 
+char			*ft_itoa_base(long int nbr, int base);
 int				handle_no_p_cent(const char *cpy);
 int				handle_glued(void);
 int				percent_nbr(const char *fmt);
