@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/23 00:52:57 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/23 06:17:44 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int						ft_printf(const char *restrict format, ...)
 	/*d = 42;*/
 	/*c = 'c';*/
 	/*[>ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
-	/*[>ft_printf("%s", str);<]*/
-	/*[>ft_printf("%d", d);<]*/
+	/*[>ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);<]*/
+	/*[>ft_printf("%d\n", d);<]*/
+	/*[>ft_printf("%x\n", d);<]*/
 	/*[>ft_printf("{%3c}", c);<]*/
 	/*return (0);*/
 /*}*/
