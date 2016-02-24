@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 18:28:37 by bndao             #+#    #+#              #
-#    Updated: 2016/02/22 13:04:36 by bndao            ###   ########.fr        #
+#    Updated: 2016/02/24 08:32:48 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,6 +103,6 @@ clean:
 
 fclean:
 	@rm -f $(NAME) $(OBJECTS)
-	@echo libt.a and *.o gone"\033[2;37mLibft.a && *.o gone abroad \033[0m"
+	@echo "\033[1;37mLibft.a && *.o gone abroad \033[0m"
 
 re: fclean all
