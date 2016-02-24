@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 08:16:30 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 09:52:07 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ char					return_char(char *fmt, char c)
 			return (c);
 		i++;
 	}
+	return (0);
+}
+
+char					find_o_zero(char *fmt)
+{
+	int				i;
+
+	i = 0;
+	if (!fmt)
+		return (0);
+	while (fmt[i] && !ft_isdigit(fmt[i]))
+		i++;
+	if (fmt[i] == 48)
+		return (48);
 	return (0);
 }
 
@@ -58,7 +72,7 @@ int						find_width(char *str)
 	while (str[i] && !(ft_isdigit(str[i])))
 		i++;
 	if (i > (int)ft_strlen(str))
-		return(0);
+		return (0);
 	start = i;
 	while (ft_isdigit(str[i]))
 		i++;

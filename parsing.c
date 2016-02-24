@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 08:24:10 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 09:52:04 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char					*after_t_conv(const char *fmt)
 				break ;
 			++i;
 		}
-		/*return (ft_strsub(fmt, i, ft_strlen(fmt) - i));*/
 	}
 	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 }
@@ -79,7 +78,6 @@ char					*before_t_conv(const char *fmt)
 				break ;
 			i++;
 		}
-		/*return (ft_strsub(fmt, 0, i));*/
 	}
 	return (ft_strsub(fmt, 0, i + 1));
 }
@@ -93,7 +91,7 @@ t_data					*init(const char *cpy)
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');
-	ptr->o_zero = return_char(before_t_conv(cpy), '0');
+	ptr->o_zero = find_o_zero(before_t_conv(cpy));
 	ptr->o_space = return_char(before_t_conv(cpy), ' ');
 	ptr->width = find_width(before_t_conv(cpy));
 	ptr->precision = 0;

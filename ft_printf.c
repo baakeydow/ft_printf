@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 08:16:30 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 09:03:53 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_false_type(t, cpy));
 	if (c->s)
 		return (handle_s(conv));
-	if (c->d)
+	if (c->d || c->i)
 		return (handle_d(conv, t));
 	if (c->c)
 		return (handle_c(conv, t));
 	if (c->C)
-		return (handle_C(conv, t));
+		return (handle_c_maj(conv, t));
 	if (c->x)
 		return (handle_x(conv, t));
 	if (c->X)
-		return (handle_X(conv, t));
+		return (handle_x_maj(conv, t));
 	if (c->p)
 		return (handle_p(conv, t));
+	if (c->o)
+		return (handle_o(conv, t));
 	return (0);
 }
 
@@ -63,7 +65,7 @@ int						ft_printf(const char *restrict format, ...)
 	return (ret);
 }
 
-/*int					main(void)*/
+/*int						main(void)*/
 /*{*/
 	/*char		*str;*/
 	/*int			d;*/
@@ -72,10 +74,11 @@ int						ft_printf(const char *restrict format, ...)
 	/*str = "24";*/
 	/*d = 42;*/
 	/*c = 'c';*/
-	/*[>ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
-	/*[>ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);<]*/
-	/*[>ft_printf("%d\n", d);<]*/
-	/*[>ft_printf("%x\n", d);<]*/
-	/*ft_printf("{%-10R}");*/
+	/*ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);*/
+	/*ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);*/
+	/*ft_printf("%d\n", d);*/
+	/*ft_printf("%x\n", d);*/
+	/*ft_printf("{%-10%}\n");*/
+	/*ft_printf("{%10%}\n");*/
 	/*return (0);*/
 /*}*/

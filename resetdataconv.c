@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:56:25 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 01:50:18 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 08:57:53 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data				*wipe_data(void)
 
 	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
-	ptr->o_minus ='\0';
+	ptr->o_minus = '\0';
 	ptr->o_plus = '\0';
 	ptr->o_diez = '\0';
 	ptr->o_zero = '\0';
@@ -53,21 +53,21 @@ t_conv				*wipe_conv(void)
 	return (ptr);
 }
 
-int				handle_glued(void)
+int					handle_glued(void)
 {
 	ft_putchar('%');
 	return (1);
 }
 
-int				null_case(void)
+int					null_case(void)
 {
 	ft_putstr("(null)");
 	return (6);
 }
 
-char			*get(const char *fmt)
+char				*get(const char *fmt)
 {
-	char *dup;
+	char		*dup;
 
 	dup = ft_strdup(fmt);
 	dup[1] = '\0';
