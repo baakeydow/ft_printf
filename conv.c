@@ -6,20 +6,27 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 10:36:05 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 21:48:25 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int					handle_s(va_list conv)
+int					handle_s(va_list conv, t_data *t)
 {
 	char		*str;
+	int			ret;
 
+	ret = 0;
 	if (!(str = va_arg(conv, char *)))
 		return (null_case());
+	ret = ft_strlen(str);
+	if (!t->o_minus && t->width)
+		ret += handle_width(ft_strlen(str), t);
 	ft_putstr(str);
-	return (ft_strlen(str));
+	if (t->o_minus && t->width)
+		ret += handle_width(ft_strlen(str), t);
+	return (ret);
 }
 
 int					handle_d(va_list conv, t_data *t)
@@ -35,9 +42,10 @@ int					handle_d(va_list conv, t_data *t)
 		ft_putchar('+');
 		ret = 1;
 	}
+	ret += handle_o_space(d, t);
 	if (!t->o_minus && t->width)
 		ret += handle_width_d(ft_strlen(ft_itoa(d)), t, d);
-	ret += handle_o_zero(d, t);
+	ret += handle_o_zero_d(d, t);
 	if (t->o_minus && t->width)
 		ret += handle_width_d(ft_strlen(ft_itoa(d)), t, d);
 	return (ret);

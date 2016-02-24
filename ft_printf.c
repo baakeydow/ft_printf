@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 09:03:53 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 22:20:57 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 	if (false_type(c))
 		return (handle_false_type(t, cpy));
 	if (c->s)
-		return (handle_s(conv));
+		return (handle_s(conv, t));
 	if (c->d || c->i)
 		return (handle_d(conv, t));
 	if (c->c)
@@ -74,11 +74,12 @@ int						ft_printf(const char *restrict format, ...)
 	/*str = "24";*/
 	/*d = 42;*/
 	/*c = 'c';*/
-	/*ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);*/
-	/*ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);*/
-	/*ft_printf("%d\n", d);*/
-	/*ft_printf("%x\n", d);*/
-	/*ft_printf("{%-10%}\n");*/
-	/*ft_printf("{%10%}\n");*/
+   /*[> ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
+	/*[>ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);<]*/
+	/*[>ft_printf("%d\n", d);<]*/
+	/*[>ft_printf("%x\n", d);<]*/
+	/*[>ft_printf("{%-10%}\n");<]*/
+	/*[>ft_printf("{%10%}\n");<]*/
+	/*ft_printf("% Zoooo");*/
 	/*return (0);*/
 /*}*/

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 09:52:04 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 22:49:31 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int						handle_false_type(t_data *t, char *cpy)
 	int			ret;
 
 	ret = 0;
+	/*ft_putendl(before_t_conv(cpy));*/
 	if (!t->o_minus && t->width)
 	{
 		ret += handle_width(1, t) + 1;
@@ -65,20 +66,21 @@ char					*before_t_conv(const char *fmt)
 		return (get(fmt));
 	while (fmt[i])
 	{
-		if (!is_b_t_conv(fmt, &i))
+		if (!is_b_t_conv(fmt, &i) || is_not_data(fmt, &i))
 			break ;
 		i++;
 	}
-	if (!fmt[i])
-	{
-		i = 0;
-		while (fmt[i])
-		{
-			if (is_not_data(fmt, &i))
-				break ;
-			i++;
-		}
-	}
+   /* if (!fmt[i])*/
+	/*{*/
+		/*i = 0;*/
+		/*while (fmt[i])*/
+		/*{*/
+			/*if (!is_b_t_conv(fmt, &i))*/
+				/*break ;*/
+			/*i++;*/
+		/*}*/
+		/*[>return (ft_strsub(fmt, 0, i));<]*/
+	/*}*/
 	return (ft_strsub(fmt, 0, i + 1));
 }
 
