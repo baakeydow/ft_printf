@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/23 06:17:44 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 02:42:43 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 {
 	if (*cpy == '%')
 		return (handle_glued());
+	if (false_type(c))
+		return (handle_false_type(t, cpy));
 	if (c->s)
 		return (handle_s(conv));
 	if (c->d)
@@ -24,6 +26,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_c(conv, t));
 	if (c->x)
 		return (handle_x(conv, t));
+	if (c->p)
+		return (handle_p(conv, t));
 	return (0);
 }
 
@@ -68,6 +72,6 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);<]*/
 	/*[>ft_printf("%d\n", d);<]*/
 	/*[>ft_printf("%x\n", d);<]*/
-	/*[>ft_printf("{%3c}", c);<]*/
+	/*ft_printf("{%10R}");*/
 	/*return (0);*/
 /*}*/

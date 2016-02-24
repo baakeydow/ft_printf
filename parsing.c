@@ -6,21 +6,20 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/23 06:16:57 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 02:47:46 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int						is_b_t_conv(const char *fmt, int *i)
+int						handle_false_type(t_data *t, char *cpy)
 {
-	if (fmt[*i] == 's' || fmt[*i] == 'S' || fmt[*i] == 'p' ||
-			fmt[*i] == 'd' || fmt[*i] == 'D' || fmt[*i] == 'i' ||
-			fmt[*i] == 'o' || fmt[*i] == 'O' || fmt[*i] == 'u' ||
-			fmt[*i] == 'U' || fmt[*i] == 'x' || fmt[*i] == 'X' ||
-			fmt[*i] == 'c' || fmt[*i] == 'C')
-		return (0);
-	return (1);
+	int			ret;
+
+	ret = 0;
+	if (t->width)
+		ret = handle_width(ft_strlen(after_t_conv(cpy)) - 1, t);
+	return (ret);
 }
 
 char					*after_t_conv(const char *fmt)
@@ -35,6 +34,17 @@ char					*after_t_conv(const char *fmt)
 		if (fmt[i] == '%')
 			break ;
 		++i;
+	}
+	if (!fmt[i])
+	{
+		i = 0;
+		while (fmt[i])
+		{
+			if (is_not_data(fmt, &i))
+				break ;
+			++i;
+		}
+		return (ft_strsub(fmt, i, ft_strlen(fmt) - i));
 	}
 	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 }
@@ -51,6 +61,17 @@ char					*before_t_conv(const char *fmt)
 		if (!is_b_t_conv(fmt, &i))
 			break ;
 		i++;
+	}
+	if (!fmt[i])
+	{
+		i = 0;
+		while (fmt[i])
+		{
+			if (is_not_data(fmt, &i))
+				break ;
+			i++;
+		}
+		return (ft_strsub(fmt, 0, i));
 	}
 	return (ft_strsub(fmt, 0, i + 1));
 }
