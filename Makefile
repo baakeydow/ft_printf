@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/21 20:55:31 by bndao             #+#    #+#              #
-#    Updated: 2016/02/22 23:37:30 by bndao            ###   ########.fr        #
+#    Updated: 2016/02/24 03:47:44 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ PTF += percent.c
 PTF += parsing.c
 PTF += handle_conv.c
 PTF += conv.c
+PTF += conv2.c
 PTF += miscellaneous.c
 PTF += resetdataconv.c
 PTF += ft_itoa_base.c

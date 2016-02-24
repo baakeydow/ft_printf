@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 02:47:46 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 04:28:03 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int						handle_false_type(t_data *t, char *cpy)
 	int			ret;
 
 	ret = 0;
-	if (t->width)
-		ret = handle_width(ft_strlen(after_t_conv(cpy)) - 1, t);
+	if (!t->o_minus && t->width)
+		ret += handle_width(ft_strlen(after_t_conv(cpy)) - 1, t);
 	return (ret);
 }
 

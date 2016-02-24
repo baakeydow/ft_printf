@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 01:50:18 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 04:10:47 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int					handle_x(va_list conv, t_data *t)
 	if (!(d = va_arg(conv, long int)) && d != 0)
 		return (null_case());
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16)), t);
-	ft_putstr(ft_itoa_base(d, 16));
-	ret += ft_strlen(ft_itoa_base(d, 16));
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t);
+	ft_putstr(ft_itoa_base(d, 16, 'a'));
+	ret += ft_strlen(ft_itoa_base(d, 16, 'a'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16)), t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t);
 	return (ret);
 }
 
@@ -87,11 +87,11 @@ int					handle_p(va_list conv, t_data *t)
 	if (!(d = va_arg(conv, long int)) && d != 0)
 		return (null_case());
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16)) + 2, t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t);
 	ft_putstr("0x");
-	ft_putstr(ft_itoa_base(d, 16));
-	ret += 2 + ft_strlen(ft_itoa_base(d, 16));
+	ft_putstr(ft_itoa_base(d, 16, 'a'));
+	ret += 2 + ft_strlen(ft_itoa_base(d, 16, 'a'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16)) + 2, t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t);
 	return (ret);
 }

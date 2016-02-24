@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 02:37:24 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 04:10:47 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct	s_conv
 	char		C;
 }				t_conv;
 
-char			*ft_itoa_base(long int nbr, int base);
+char			*ft_itoa_base(long int nbr, int base, char c);
 int				false_type(t_conv *c);
 int				printchar(const char **cpy);
 int				handle_no_p_cent(const char *cpy);
@@ -69,7 +69,9 @@ int				handle_false_type(t_data *t, char *cpy);
 int				handle_s(va_list conv);
 int				handle_d(va_list conv, t_data *t);
 int				handle_c(va_list conv, t_data *t);
+int				handle_C(va_list conv, t_data *t);
 int				handle_x(va_list conv, t_data *t);
+int				handle_X(va_list conv, t_data *t);
 int				handle_p(va_list conv, t_data *t);
 
 #endif

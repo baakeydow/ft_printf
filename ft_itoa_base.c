@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 23:35:59 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/23 05:54:13 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 03:45:17 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,28 @@ static char		*str_size(char **str, int *not_neg, size_t *i, int *rem)
 	return (*str);
 }
 
-char			*ft_itoa_base(long int nbr, int base)
+char			*ft_itoa_base(long int nbr, int base, char c)
 {
-	int		rem;
-	int		pos;
+	int		d[2];
 	size_t	i;
 	char	*str_number;
 
-	if (!(str_size(&str_number, &pos, &i, &rem)))
+	if (!(str_size(&str_number, &d[1], &i, &d[0])))
 		return (NULL);
 	if (nbr == 0 || nbr == -2147483648)
 		return (ft_zero_or_min(nbr));
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		pos = 0;
+		d[1] = 0;
 	}
 	while (nbr)
 	{
-		rem = nbr % base;
-		str_number[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+		d[0] = nbr % base;
+		str_number[i++] = (d[0] > 9) ? (d[0] - 10) + c : d[0] + '0';
 		nbr = nbr / base;
 	}
-	if (!pos)
+	if (!d[1])
 		str_number[i++] = '-';
 	str_number[i] = '\0';
 	return (ft_strrev(str_number));

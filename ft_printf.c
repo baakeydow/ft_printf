@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 02:42:43 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 04:10:47 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_d(conv, t));
 	if (c->c)
 		return (handle_c(conv, t));
+	if (c->C)
+		return (handle_C(conv, t));
 	if (c->x)
 		return (handle_x(conv, t));
+	if (c->X)
+		return (handle_X(conv, t));
 	if (c->p)
 		return (handle_p(conv, t));
 	return (0);
