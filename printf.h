@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 04:10:47 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 08:16:30 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_conv
 
 char			*ft_itoa_base(long int nbr, int base, char c);
 int				false_type(t_conv *c);
+char			get_last_char(char *str);
 int				printchar(const char **cpy);
 int				handle_no_p_cent(const char *cpy);
 int				is_not_data(const char *fmt, int *i);

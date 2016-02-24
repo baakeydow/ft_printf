@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 04:28:03 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 08:16:30 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@ int						handle_false_type(t_data *t, char *cpy)
 
 	ret = 0;
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(after_t_conv(cpy)) - 1, t);
+	{
+		ret += handle_width(1, t) + 1;
+		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
+	}
+	if (t->o_minus && t->width)
+	{
+		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
+		ret += handle_width(1, t) + 1;
+	}
 	return (ret);
 }
 
@@ -44,7 +52,7 @@ char					*after_t_conv(const char *fmt)
 				break ;
 			++i;
 		}
-		return (ft_strsub(fmt, i, ft_strlen(fmt) - i));
+		/*return (ft_strsub(fmt, i, ft_strlen(fmt) - i));*/
 	}
 	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 }
@@ -71,7 +79,7 @@ char					*before_t_conv(const char *fmt)
 				break ;
 			i++;
 		}
-		return (ft_strsub(fmt, 0, i));
+		/*return (ft_strsub(fmt, 0, i));*/
 	}
 	return (ft_strsub(fmt, 0, i + 1));
 }

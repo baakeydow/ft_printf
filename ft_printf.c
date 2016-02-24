@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 04:10:47 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/24 08:16:30 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);<]*/
 	/*[>ft_printf("%d\n", d);<]*/
 	/*[>ft_printf("%x\n", d);<]*/
-	/*ft_printf("{%10R}");*/
+	/*ft_printf("{%-10R}");*/
 	/*return (0);*/
 /*}*/
