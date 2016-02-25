@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 09:52:07 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 03:21:45 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int						find_width(char *str)
 	start = 0;
 	if (!str)
 		return (0);
+	if (str[i] == '.')
+		return (0);
 	while (str[i] && !(ft_isdigit(str[i])))
 		i++;
 	if (i > (int)ft_strlen(str))
@@ -76,5 +78,31 @@ int						find_width(char *str)
 	start = i;
 	while (ft_isdigit(str[i]))
 		i++;
+	return (ft_atoi(ft_strsub(str, start, i)));
+}
+
+int						find_prec(char *str)
+{
+	int				i;
+	int				start;
+
+	i = 0;
+	start = 0;
+	if (!str)
+		return (0);
+	if (str[i++] == '.')
+	{
+		start = i;
+		while (ft_isdigit(str[i]))
+			i++;
+		return (ft_atoi(ft_strsub(str, start, i)));
+	}
+	while (str[i] && str[i] != '.')
+		i++;
+	if (i > (int)ft_strlen(str))
+		return (0);
+	start = i + 1;
+	while (ft_isdigit(str[++i]))
+		;
 	return (ft_atoi(ft_strsub(str, start, i)));
 }

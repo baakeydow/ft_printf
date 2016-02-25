@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:55 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 08:16:30 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 01:53:28 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int						is_not_data(const char *fmt, int *i)
 {
 	if (fmt[*i] == '-' || fmt[*i] == '+' || fmt[*i] == '#' ||
 			fmt[*i] == ' ' || ft_isdigit(fmt[*i]) || fmt[*i] == 'l' ||
-			fmt[*i] == 'h' || fmt[*i] == 'j' || fmt[*i] == 'z')
+			fmt[*i] == 'h' || fmt[*i] == 'j' || fmt[*i] == 'z' ||
+			fmt[*i] == '.')
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 21:45:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 04:09:01 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,13 @@ int						handle_width_d(int len_conv, t_data *t, int d)
 	int			i;
 	char		c;
 	char		ok;
+	int			ret;
 
 	c = ' ';
 	ok = 0;
+	ret = t->width - len_conv + ok;
+	if (t->prec > len_conv)
+		ret = t->width - (len_conv - (len_conv - t->prec));
 	if (t->o_zero)
 		c = '0';
 	if (d < 0 && t->o_zero)
@@ -46,7 +50,7 @@ int						handle_width_d(int len_conv, t_data *t, int d)
 		ok = 1;
 		ft_putchar('-');
 	}
-	i = t->width - len_conv;
+	i = ret;
 	if (i <= 0)
 		return (0);
 	while (i--)
@@ -56,7 +60,7 @@ int						handle_width_d(int len_conv, t_data *t, int d)
 		d = -d;
 		ft_putnbr(d);
 	}
-	return (t->width - len_conv + ok);
+	return (ret);
 }
 
 int					handle_o_zero_d(int d, t_data *t)
@@ -82,4 +86,19 @@ int					handle_o_space(int d, t_data *t)
 		ret = 1;
 	}
 	return (ret);
+}
+
+int					handle_o_point(int len_conv, t_data *t)
+{
+	int			i;
+
+	i = t->prec - len_conv;
+	if (i <= 0)
+		return (0);
+	while (i)
+	{
+		ft_putchar('0');
+		i--;
+	}
+	return (t->prec - len_conv);
 }

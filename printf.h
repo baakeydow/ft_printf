@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 21:48:51 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 02:25:12 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_data
 	char		o_zero;
 	char		o_space;
 	int			width;
-	int			precision;
+	int			prec;
 	char		*length;
 }				t_data;
 
@@ -60,13 +60,15 @@ t_conv			*wipe_conv(void);
 char			*before_t_conv(const char *fmt);
 char			*after_t_conv(const char *fmt);
 int				is_b_t_conv(const char *fmt, int *i);
-char			return_char(char *fmt, char c);
-char			find_o_zero(char *fmt);
-int				null_case(void);
 char			*get(const char *fmt);
+char			return_char(char *fmt, char c);
+int				null_case(void);
+char			find_o_zero(char *fmt);
 int				find_width(char *str);
+int				find_prec(char *str);
 int				handle_width_d(int len_conv, t_data *t, int d);
 int				handle_width(int len_conv, t_data *t);
+int				handle_o_point(int len_conv, t_data *t);
 int				handle_o_zero_d(int d, t_data *t);
 int				handle_o_space(int d, t_data *t);
 int				handle_false_type(t_data *t, char *cpy);

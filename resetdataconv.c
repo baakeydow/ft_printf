@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:56:25 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 08:57:53 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 02:10:44 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_data				*wipe_data(void)
 	ptr->o_zero = '\0';
 	ptr->o_space = '\0';
 	ptr->width = 0;
-	ptr->precision = 0;
+	ptr->prec = 0;
 	ptr->length = NULL;
 	return (ptr);
 }
