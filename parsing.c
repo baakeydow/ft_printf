@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 02:11:04 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 08:39:22 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int						handle_false_type(t_data *t, char *cpy)
 	int			ret;
 
 	ret = 0;
-	/*ft_putendl(before_t_conv(cpy));*/
+	if (percent_nbr(before_t_conv(cpy)))
+		return (handle_glued());
 	if (!t->o_minus && t->width)
 	{
 		ret += handle_width(1, t) + 1;

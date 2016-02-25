@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 03:23:15 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 08:39:22 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_false_type(t, cpy));
 	if (c->s)
 		return (handle_s(conv, t));
-	if (c->d || c->i)
+	if (c->d || c->i || c->u)
 		return (handle_d(conv, t));
 	if (c->c)
 		return (handle_c(conv, t));
@@ -34,6 +34,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_p(conv, t));
 	if (c->o)
 		return (handle_o(conv, t));
+	if (c->O)
+		return (handle_o_maj(conv, t));
 	return (0);
 }
 
@@ -79,7 +81,7 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("%d\n", d);<]*/
 	/*[>ft_printf("%x\n", d);<]*/
 	/*[>ft_printf("{%-10%}\n");<]*/
-	/*[>ft_printf("{%10%}\n");<]*/
-	/*ft_printf("%15.4d", d);*/
+	/*ft_printf("%.3%");*/
+	/*[>ft_printf("%15.4d", d);<]*/
 	/*return (0);*/
 /*}*/

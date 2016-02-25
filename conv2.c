@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 03:46:46 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/24 21:26:00 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 08:39:30 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,37 @@ int					handle_o(va_list conv, t_data *t)
 		return (null_case());
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'a')), t);
+	if (t->o_diez && d != 0)
+	{
+		ret += 1;
+		ft_putchar('0');
+	}
 	ft_putstr(ft_itoa_base(d, 8, 'a'));
 	ret += ft_strlen(ft_itoa_base(d, 8, 'a'));
 	if (t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'a')), t);
+	return (ret);
+}
+
+int					handle_o_maj(va_list conv, t_data *t)
+{
+	long int	d;
+	int			ret;
+
+	ret = 0;
+	if (!(d = va_arg(conv, long int)) && d != 0)
+		return (null_case());
+	if (!t->o_minus && t->width)
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'A')), t);
+	if (t->o_diez && d != 0)
+	{
+		ret += 1;
+		ft_putchar('0');
+	}
+	ft_putstr(ft_itoa_base(d, 8, 'A'));
+	ret += ft_strlen(ft_itoa_base(d, 8, 'A'));
+	if (t->o_minus && t->width)
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'A')), t);
 	return (ret);
 }
 
@@ -56,6 +83,11 @@ int					handle_x_maj(va_list conv, t_data *t)
 		return (null_case());
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'A')), t);
+	if (t->o_diez && d != 0)
+	{
+		ret += 2;
+		ft_putstr("0X");
+	}
 	ft_putstr(ft_itoa_base(d, 16, 'A'));
 	ret += ft_strlen(ft_itoa_base(d, 16, 'A'));
 	if (t->o_minus && t->width)

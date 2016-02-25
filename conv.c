@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 04:11:33 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 08:39:22 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int					handle_d(va_list conv, t_data *t)
 	int			ret;
 
 	ret = 0;
-	if (!(d = va_arg(conv, int)))
+	if (!(d = va_arg(conv, int)) && d != 0)
 		return (null_case());
 	if (d >= 0 && t->o_plus)
 	{
@@ -45,8 +45,8 @@ int					handle_d(va_list conv, t_data *t)
 	ret += handle_o_space(d, t);
 	if (!t->o_minus && t->width)
 		ret += handle_width_d(ft_strlen(ft_itoa(d)), t, d);
-	if (!t->o_minus && t->prec)
-		ret += handle_o_point(ft_strlen(ft_itoa(d)), t);
+	if (!t->o_minus && t->prec && d > 0)
+		ret += handle_o_point(ft_strlen(ft_itoa(d)), t, d);
 	ret += handle_o_zero_d(d, t);
 	if (t->o_minus && t->width)
 		ret += handle_width_d(ft_strlen(ft_itoa(d)), t, d);
@@ -80,6 +80,11 @@ int					handle_x(va_list conv, t_data *t)
 		return (null_case());
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t);
+	if (t->o_diez && d != 0)
+	{
+		ret += 2;
+		ft_putstr("0x");
+	}
 	ft_putstr(ft_itoa_base(d, 16, 'a'));
 	ret += ft_strlen(ft_itoa_base(d, 16, 'a'));
 	if (t->o_minus && t->width)

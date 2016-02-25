@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 04:09:01 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/25 08:39:22 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,42 @@ int						handle_width_d(int len_conv, t_data *t, int d)
 	return (ret);
 }
 
+int					handle_o_point(int len_conv, t_data *t, int d)
+{
+	int			i;
+	int			ok;
+
+	ok = 0;
+	if (d < 0)
+		ok = 1;
+	i = t->prec - len_conv - ok;
+	if (i <= 0)
+		return (0);
+	while (i)
+	{
+		ft_putchar('0');
+		i--;
+	}
+	return (t->prec - len_conv - ok);
+}
+
 int					handle_o_zero_d(int d, t_data *t)
 {
-	if (t->o_zero && d < 0)
+	int			ret;
+
+	ret = 0;
+	if (t->o_zero && d < 0 && !t->prec)
 	{
 		d = -d;
-		return (ft_strlen(ft_itoa(d)));
+		return (ft_strlen(ft_itoa(d)) + 1);
+	}
+	else if (d < 0 && t->prec)
+	{
+		ft_putchar('-');
+		ret = handle_o_point(ft_strlen(ft_itoa(d)) - 2, t, d);
+		ret += ft_strlen(ft_itoa(d));
+		ft_putnbr(-d);
+		return (ret);
 	}
 	else
 		ft_putnbr(d);
@@ -86,19 +116,4 @@ int					handle_o_space(int d, t_data *t)
 		ret = 1;
 	}
 	return (ret);
-}
-
-int					handle_o_point(int len_conv, t_data *t)
-{
-	int			i;
-
-	i = t->prec - len_conv;
-	if (i <= 0)
-		return (0);
-	while (i)
-	{
-		ft_putchar('0');
-		i--;
-	}
-	return (t->prec - len_conv);
 }
