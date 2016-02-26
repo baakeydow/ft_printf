@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/26 06:33:01 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/26 08:00:03 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,22 @@ int						ft_printf(const char *restrict format, ...)
 	return (ret);
 }
 
-int						main(void)
-{
-	char		*str;
-	int			d;
-	int			c;
+/*int						main(void)*/
+/*{*/
+	/*char		*str;*/
+	/*int			d;*/
+	/*int			c;*/
 
-	str = "24";
-	d = 42;
-	c = 'c';
-   /* ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);*/
-	/*ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);*/
-	/*ft_printf("%d\n", d);*/
-	/*ft_printf("%x\n", d);*/
-	/*ft_printf("{%-10%}\n");*/
-	/*ft_printf("%.3d", 0);*/
-	ft_printf("%4.s", "42");
-	/*ft_printf("%15.4d", d);*/
-	return (0);
-}
+	/*str = "24";*/
+	/*d = 42;*/
+	/*c = 'c';*/
+   /*[> ft_printf("Wazzup ? cool %s easy %+-4d? %c\n", str, d, c);<]*/
+	/*[>ft_printf("la string (%s) est a l'adresse 0x%x\n", str, &str);<]*/
+	/*[>ft_printf("%d\n", d);<]*/
+	/*[>ft_printf("%x\n", d);<]*/
+	/*[>ft_printf("{%-10%}\n");<]*/
+	/*[>ft_printf("%.3d", 0);<]*/
+	/*ft_printf("%15.4s", "42");*/
+	/*[>ft_printf("%15.4d", d);<]*/
+	/*return (0);*/
+/*}*/
