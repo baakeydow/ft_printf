@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:56:25 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 02:10:44 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/26 02:30:02 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,23 @@ t_conv				*wipe_conv(void)
 	return (ptr);
 }
 
-int					handle_glued(void)
+int					handle_glued(t_data *t)
 {
+	int			i;
+	char		c;
+
+	i = 0;
+	c = ' ';
+	if (t->o_zero)
+		c = '0';
+	if (t->width && !t->o_minus)
+	{
+		i = t->width - 1;
+		while (i--)
+			ft_putchar(c);
+		ft_putchar('%');
+		return (t->width);
+	}
 	ft_putchar('%');
 	return (1);
 }

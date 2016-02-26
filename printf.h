@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/26 00:20:47 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/26 06:22:46 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				false_type(t_conv *c);
 int				printchar(const char **cpy);
 int				handle_no_p_cent(const char *cpy);
 int				is_not_data(const char *fmt, int *i);
-int				handle_glued(void);
+int				handle_glued(t_data *t);
 int				percent_nbr(const char *fmt);
 t_data			*init(const char *cpy);
 t_data			*wipe_data(void);
@@ -64,17 +64,20 @@ int				is_b_t_conv(const char *fmt, int *i);
 char			*get(const char *fmt);
 char			return_char(char *fmt, char c);
 int				null_case(void);
+int				null_case_s(t_data *t);
 char			find_o_zero(char *fmt);
 int				find_width(char *str);
 int				find_prec(char *str);
+int				prec_str(t_data *t, char *str, t_conv *c);
+int				len_str(t_data *t, char *str);
 int				handle_width_d(int len_conv, t_data *t, int d);
 int				handle_width(int len_conv, t_data *t);
 int				handle_o_point(int len_conv, t_data *t, int d);
 int				handle_o_zero_d(int d, t_data *t);
-int				handle_o_space(int d, t_data *t);
+int				handle_o_space(int d, t_data *t, t_conv *c);
 int				handle_false_type(t_data *t, char *cpy);
-int				handle_s(va_list conv, t_data *t);
-int				handle_d(va_list conv, t_data *t);
+int				handle_s(va_list conv, t_data *t, t_conv *c);
+int				handle_d(va_list conv, t_data *t, t_conv *c);
 int				handle_c(va_list conv, t_data *t);
 int				handle_c_maj(va_list conv, t_data *t);
 int				handle_x(va_list conv, t_data *t, t_conv *c);

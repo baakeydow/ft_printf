@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 23:16:40 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/26 03:57:28 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int						find_width(char *str)
 		return (0);
 	if (str[i] == '.')
 		return (0);
-	while (str[i] && !(ft_isdigit(str[i])))
+	while (str[i] && !(ft_isdigit(str[i])) && str[i] != '.')
 		i++;
 	if (i > (int)ft_strlen(str))
 		return (0);

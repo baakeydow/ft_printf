@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 08:39:22 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/26 05:57:41 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ int					handle_o_zero_d(int d, t_data *t)
 	return (ft_strlen(ft_itoa(d)));
 }
 
-int					handle_o_space(int d, t_data *t)
+int					handle_o_space(int d, t_data *t, t_conv *c)
 {
 	int			ret;
 
 	ret = 0;
-	if (d >= 0 && !t->o_plus && t->o_space)
+	if (d >= 0 && !t->o_plus && t->o_space && !c->u)
 	{
 		ft_putchar(' ');
 		ret = 1;
