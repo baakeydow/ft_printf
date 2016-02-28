@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 02:07:07 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 09:36:16 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_false_type(c, t, cpy));
 	if (c->s)
 		return (handle_s(conv, t, c));
-	if (c->d || c->i || c->u)
+	if (c->d || c->i)
 		return (handle_d(conv, t, c));
+	if (c->u)
+		return (handle_u(conv, t));
 	if (c->c)
 		return (handle_c(conv, t, c));
 	if (c->C)
@@ -58,7 +60,7 @@ int						ft_printf(const char *restrict format, ...)
 			t = init(format);
 			c = init_conv(format);
 			ret += handle(conv, (char *)format, t, c);
-			format = after_t_conv(format);
+			format = after_t_conv(format, c, t);
 			c = wipe_conv();
 			t = wipe_data();
 		}
@@ -82,7 +84,7 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("%x\n", d);<]*/
 	/*[>ft_printf("{%-10%}\n");<]*/
 	/*[>ft_printf("%.3d", 0);<]*/
-	/*ft_printf("%4.s", "42");*/
+	/*ft_printf("{%}");*/
 	/*[>ft_printf("%15.4d", d);<]*/
 	/*return (0);*/
 /*}*/

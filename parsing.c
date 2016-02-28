@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 02:07:09 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 07:56:28 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,25 @@ int						handle_false_type(t_conv *c, t_data *t, char *cpy)
 	return (ret);
 }
 
-char					*after_t_conv(const char *fmt)
+char					*after_t_conv(const char *fmt, t_conv *c, t_data *t)
 {
 	int			i;
 
 	i = 0;
+	if (false_type(c) && !percent_nbr(fmt) && !t->o_minus &&
+			!t->o_space && !t->width)
+		return ((char *)fmt);
+	if (false_type(c) && !percent_nbr(fmt) && (!t->o_minus || t->o_space))
+		return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 	while (fmt[i])
 	{
+		if (is_not_data(fmt, &i))
+			break ;
 		if (!is_b_t_conv(fmt, &i))
 			break ;
 		if (fmt[i] == '%')
 			break ;
 		++i;
-	}
-	if (!fmt[i])
-	{
-		i = 0;
-		while (fmt[i])
-		{
-			if (is_not_data(fmt, &i))
-				break ;
-			++i;
-		}
 	}
 	return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 }

@@ -6,13 +6,13 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 02:10:41 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 05:43:43 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int						handle_width(int len_conv, t_data *t, t_conv *c)
+int						handle_width(int len, t_data *t, t_conv *c)
 {
 	int			i;
 	char		ch;
@@ -20,14 +20,14 @@ int						handle_width(int len_conv, t_data *t, t_conv *c)
 	ch = ' ';
 	if (t->o_zero)
 		ch = '0';
-	i = t->width - len_conv;
-	if (c->s && t->width > len_conv && !t->prec && return_char(c->b_t_conv, '.'))
+	i = t->width - len;
+	if (c->s && t->width > len && !t->prec && return_char(c->b_t_conv, '.'))
 		i = t->prec;
 	if (i < 0)
 		return (0);
 	if (i == 0)
 	{
-		len_conv = 0;
+		len = 0;
 		i = t->width;
 	}
 	while (i)
@@ -35,7 +35,7 @@ int						handle_width(int len_conv, t_data *t, t_conv *c)
 		ft_putchar(ch);
 		i--;
 	}
-	return (t->width - len_conv);
+	return (t->width - len);
 }
 
 int						handle_width_d(int len_conv, t_data *t, int d)

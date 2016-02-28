@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 02:07:04 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 09:35:43 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_data			*wipe_data(void);
 t_conv			*init_conv(const char *cpy);
 t_conv			*wipe_conv(void);
 char			*before_t_conv(const char *fmt);
-char			*after_t_conv(const char *fmt);
+char			*after_t_conv(const char *fmt, t_conv *c, t_data *t);
 int				is_b_t_conv(const char *fmt, int *i);
 char			*get(const char *fmt);
 char			return_char(char *fmt, char c);
@@ -78,6 +78,8 @@ int				handle_o_space(int d, t_data *t, t_conv *c);
 int				handle_false_type(t_conv *c, t_data *t, char *cpy);
 int				handle_s(va_list conv, t_data *t, t_conv *c);
 int				handle_d(va_list conv, t_data *t, t_conv *c);
+int				handle_u(va_list conv, t_data *t);
+void			ft_putnbr_u(unsigned int n);
 int				handle_c(va_list conv, t_data *t, t_conv *c);
 int				handle_c_maj(va_list conv, t_data *t, t_conv *c);
 int				handle_x(va_list conv, t_data *t, t_conv *c);
