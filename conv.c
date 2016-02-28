@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/26 07:57:39 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 02:13:05 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int					handle_s(va_list conv, t_data *t, t_conv *c)
 	if (len < t->prec && !t->width)
 		len = t->prec;
 	if (!t->o_minus && t->width)
-		ret += handle_width(len, t);
+		ret += handle_width(len, t, c);
 	ret += prec_str(t, str, c);
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(str), t);
+		ret += handle_width(ft_strlen(str), t, c);
 	return (ret);
 }
 
@@ -67,7 +67,7 @@ int					handle_x(va_list conv, t_data *t, t_conv *c)
 	if (d == 0 && !t->prec && t->o_diez && return_char(c->b_t_conv, '.'))
 		return (0);
 	if (!t->o_minus && t->width && !t->prec)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t, c);
 	if (t->o_diez && d != 0)
 	{
 		ret += 2;
@@ -78,7 +78,7 @@ int					handle_x(va_list conv, t_data *t, t_conv *c)
 	ft_putstr(ft_itoa_base(d, 16, 'a'));
 	ret += ft_strlen(ft_itoa_base(d, 16, 'a'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t, c);
 	return (ret);
 }
 
@@ -91,30 +91,30 @@ int					handle_p(va_list conv, t_data *t, t_conv *c)
 	if (!(d = va_arg(conv, long int)) && d != 0)
 		return (null_case());
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t, c);
 	ft_putstr("0x");
 	if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
 		return (2);
 	ft_putstr(ft_itoa_base(d, 16, 'a'));
 	ret += 2 + ft_strlen(ft_itoa_base(d, 16, 'a'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t, c);
 	return (ret);
 }
 
-int					handle_c(va_list conv, t_data *t)
+int					handle_c(va_list conv, t_data *t, t_conv *c)
 {
-	char		c;
+	char		ch;
 	int			ret;
 
 	ret = 0;
-	if (!(c = (char)va_arg(conv, int)) && c != 0)
+	if (!(ch = (char)va_arg(conv, int)) && ch != 0)
 		return (null_case());
 	if (!t->o_minus && t->width)
-		ret += handle_width(1, t);
-	ft_putchar(c);
+		ret += handle_width(1, t, c);
+	ft_putchar(ch);
 	ret += 1;
 	if (t->o_minus && t->width)
-		ret += handle_width(1, t);
+		ret += handle_width(1, t, c);
 	return (ret);
 }

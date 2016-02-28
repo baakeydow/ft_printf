@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/26 06:27:20 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 01:48:14 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,8 @@ int					prec_str(t_data *t, char *str, t_conv *c)
 			ft_putstr(str);
 			return ((int)ft_strlen(str));
 		}
-		while (i)
-		{
-			ft_putchar(str[l]);
-			l++;
-			i--;
-		}
+		while (i--)
+			ft_putchar(str[l++]);
 		return (t->prec);
 	}
 	ft_putstr(str);

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/26 08:00:03 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 02:07:07 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 	if (*cpy == '%')
 		return (handle_glued(t));
 	if (false_type(c))
-		return (handle_false_type(t, cpy));
+		return (handle_false_type(c, t, cpy));
 	if (c->s)
 		return (handle_s(conv, t, c));
 	if (c->d || c->i || c->u)
 		return (handle_d(conv, t, c));
 	if (c->c)
-		return (handle_c(conv, t));
+		return (handle_c(conv, t, c));
 	if (c->C)
-		return (handle_c_maj(conv, t));
+		return (handle_c_maj(conv, t, c));
 	if (c->x)
 		return (handle_x(conv, t, c));
 	if (c->X)
-		return (handle_x_maj(conv, t));
+		return (handle_x_maj(conv, t, c));
 	if (c->p)
 		return (handle_p(conv, t, c));
 	if (c->o)
-		return (handle_o(conv, t));
+		return (handle_o(conv, t, c));
 	if (c->O)
-		return (handle_o_maj(conv, t));
+		return (handle_o_maj(conv, t, c));
 	return (0);
 }
 
@@ -82,7 +82,7 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("%x\n", d);<]*/
 	/*[>ft_printf("{%-10%}\n");<]*/
 	/*[>ft_printf("%.3d", 0);<]*/
-	/*ft_printf("%15.4s", "42");*/
+	/*ft_printf("%4.s", "42");*/
 	/*[>ft_printf("%15.4d", d);<]*/
 	/*return (0);*/
 /*}*/

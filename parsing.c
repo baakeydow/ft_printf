@@ -6,13 +6,13 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/26 02:19:50 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 02:07:09 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int						handle_false_type(t_data *t, char *cpy)
+int						handle_false_type(t_conv *c, t_data *t, char *cpy)
 {
 	int			ret;
 
@@ -21,13 +21,13 @@ int						handle_false_type(t_data *t, char *cpy)
 		return (handle_glued(t));
 	if (!t->o_minus && t->width)
 	{
-		ret += handle_width(1, t) + 1;
+		ret += handle_width(1, t, c) + 1;
 		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
 	}
 	if (t->o_minus && t->width)
 	{
 		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
-		ret += handle_width(1, t) + 1;
+		ret += handle_width(1, t, c) + 1;
 	}
 	return (ret);
 }
