@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 09:36:16 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/29 00:21:57 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 	if (c->d || c->i)
 		return (handle_d(conv, t, c));
 	if (c->u)
-		return (handle_u(conv, t));
+		return (handle_u(conv, t, c));
 	if (c->c)
 		return (handle_c(conv, t, c));
 	if (c->C)
@@ -84,7 +84,8 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("%x\n", d);<]*/
 	/*[>ft_printf("{%-10%}\n");<]*/
 	/*[>ft_printf("%.3d", 0);<]*/
-	/*ft_printf("{%}");*/
+	/*[>ft_printf("%u", 4294967295);<]*/
+	/*ft_printf("%15.4d", -42);*/
 	/*[>ft_printf("%15.4d", d);<]*/
 	/*return (0);*/
 /*}*/

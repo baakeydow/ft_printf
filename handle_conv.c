@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 05:43:43 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/29 01:46:42 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int						handle_width(int len, t_data *t, t_conv *c)
 	if (t->o_zero)
 		ch = '0';
 	i = t->width - len;
+	if (t->prec > len)
+		i = t->width - t->prec;
 	if (c->s && t->width > len && !t->prec && return_char(c->b_t_conv, '.'))
 		i = t->prec;
 	if (i < 0)
@@ -35,7 +37,7 @@ int						handle_width(int len, t_data *t, t_conv *c)
 		ft_putchar(ch);
 		i--;
 	}
-	return (t->width - len);
+	return (t->prec > len ? t->width - t->prec : t->width - len);
 }
 
 int						handle_width_d(int len_conv, t_data *t, int d)
@@ -46,17 +48,20 @@ int						handle_width_d(int len_conv, t_data *t, int d)
 	int			ret;
 
 	c = ' ';
-	ok = 0;
-	ret = t->width - len_conv + ok;
-	if (t->prec > len_conv)
-		ret = t->width - (len_conv - (len_conv - t->prec));
 	if (t->o_zero)
 		c = '0';
+	ok = 0;
+	ret = 0;
 	if (d < 0 && t->o_zero)
 	{
 		ok = 1;
 		ft_putchar('-');
 	}
+	if (d < 0 && t->prec && t->prec > len_conv)
+		ok = 1;
+	ret += t->width - len_conv;
+	if (t->prec > len_conv)
+		ret = t->width - (len_conv - (len_conv - t->prec)) - ok;
 	i = ret;
 	if (i <= 0)
 		return (0);
@@ -95,10 +100,7 @@ int					handle_o_zero_d(int d, t_data *t)
 
 	ret = 0;
 	if (t->o_zero && d < 0 && !t->prec)
-	{
-		d = -d;
-		return (ft_strlen(ft_itoa(d)) + 1);
-	}
+		return (ft_strlen(ft_itoa(d)));
 	else if (d < 0 && t->prec)
 	{
 		ft_putchar('-');
@@ -107,6 +109,8 @@ int					handle_o_zero_d(int d, t_data *t)
 		ft_putnbr(-d);
 		return (ret);
 	}
+	else if (d == 0 && !t->prec)
+		return (0);
 	else
 		ft_putnbr(d);
 	return (ft_strlen(ft_itoa(d)));

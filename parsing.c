@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 07:56:28 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/28 23:34:57 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int						handle_false_type(t_conv *c, t_data *t, char *cpy)
 	ret = 0;
 	if (percent_nbr(before_t_conv(cpy)))
 		return (handle_glued(t));
-	if (!t->o_minus && t->width)
+   if (!t->o_minus && t->width)
 	{
 		ret += handle_width(1, t, c) + 1;
 		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
@@ -40,7 +40,8 @@ char					*after_t_conv(const char *fmt, t_conv *c, t_data *t)
 	if (false_type(c) && !percent_nbr(fmt) && !t->o_minus &&
 			!t->o_space && !t->width)
 		return ((char *)fmt);
-	if (false_type(c) && !percent_nbr(fmt) && (!t->o_minus || t->o_space))
+	if (false_type(c) && !percent_nbr(fmt) && (!t->o_minus || t->o_space)
+			&& !t->o_zero)
 		return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 	while (fmt[i])
 	{

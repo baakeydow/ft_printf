@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 09:35:43 by bndao            ###   ########.fr       */
+/*   Updated: 2016/02/29 00:21:44 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int				handle_o_space(int d, t_data *t, t_conv *c);
 int				handle_false_type(t_conv *c, t_data *t, char *cpy);
 int				handle_s(va_list conv, t_data *t, t_conv *c);
 int				handle_d(va_list conv, t_data *t, t_conv *c);
-int				handle_u(va_list conv, t_data *t);
+int				handle_u(va_list conv, t_data *t, t_conv *c);
 void			ft_putnbr_u(unsigned int n);
 int				handle_c(va_list conv, t_data *t, t_conv *c);
 int				handle_c_maj(va_list conv, t_data *t, t_conv *c);
