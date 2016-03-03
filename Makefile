@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/21 20:55:31 by bndao             #+#    #+#              #
-#    Updated: 2016/02/26 01:02:03 by bndao            ###   ########.fr        #
+#    Updated: 2016/03/02 01:34:11 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,7 +112,7 @@ $(NAME): $(OBJECTS)
 %.o:%.c
 	@$(CC) $(FLAGS) -c $< -o $@
 
-allclean: all clean
+allclean: fclean all clean
 
 clean:
 	@rm -f $(OBJECTS)
