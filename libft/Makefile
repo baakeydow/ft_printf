@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 18:28:37 by bndao             #+#    #+#              #
-#    Updated: 2016/02/24 08:32:48 by bndao            ###   ########.fr        #
+#    Updated: 2016/03/04 13:35:26 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,11 +95,11 @@ $(NAME):
 	@ranlib $(NAME)
 	@echo "\033[3;34mLibft.a Created !\033[0m"
 
-allclean: all clean
+allclean: fclean all clean
 
 clean:
 	@rm -f $(OBJECTS)
-	@echo *.o gone"\033[1;37m*.o gone !\033[0m"
+	@echo "\033[1;37m*.o gone !\033[0m"
 
 fclean:
 	@rm -f $(NAME) $(OBJECTS)

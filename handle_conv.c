@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/29 01:46:42 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/03 10:41:49 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int						handle_width_d(int len_conv, t_data *t, int d)
 {
 	int			i;
 	char		c;
-	char		ok;
+	int			ok;
 	int			ret;
 
 	c = ' ';

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/29 00:21:44 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/04 17:50:04 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include "libft/libft.h"
 # include <stdarg.h>
+# include <wchar.h>
 
 typedef struct	s_data
 {
@@ -47,7 +48,10 @@ typedef struct	s_conv
 }				t_conv;
 
 int				ft_printf(const char *format, ...);
+char			*ft_widechar_2_reg(wchar_t wide);
+char			*ft_widestr_2_reg(wchar_t *src);
 char			*ft_itoa_base(long int nbr, int base, char c);
+char			*ft_nbr_to_char(int nbr, int base, char c);
 int				false_type(t_conv *c);
 int				printchar(const char **cpy);
 int				handle_no_p_cent(const char *cpy);
