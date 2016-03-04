@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/28 23:34:57 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/04 18:24:17 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char					*after_t_conv(const char *fmt, t_conv *c, t_data *t)
 			!t->o_space && !t->width)
 		return ((char *)fmt);
 	if (false_type(c) && !percent_nbr(fmt) && (!t->o_minus || t->o_space)
-			&& !t->o_zero)
+			&& !t->o_zero && !t->width)
 		return (ft_strsub(fmt, i + 1, ft_strlen(fmt) - i));
 	while (fmt[i])
 	{
