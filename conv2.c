@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 03:46:46 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/05 14:17:14 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 17:09:43 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ int					handle_o(va_list conv, t_data *t, t_conv *c)
 		ret += 1;
 		ft_putchar('0');
 	}
-	if (!t->o_minus && t->prec && d >= 0 && t->o_diez)
+	if (!t->o_minus && t->prec && d >= 0)
 		ret += handle_o_point(ft_strlen(ft_itoa_base(d, 8, 'a')) + sharp, t, d);
 	if (!(d == 0 && !t->prec && return_char(c->b_t_conv, '.')))
 		ft_putstr(ft_itoa_base(d, 8, 'a'));
+	else
+		ft_putchar(' ');
 	ret += ft_strlen(ft_itoa_base(d, 8, 'a'));
 	if (t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'a')) + sharp, t, c);
@@ -81,23 +83,6 @@ int					handle_o_maj(va_list conv, t_data *t, t_conv *c)
 	ret += ft_strlen(ft_itoa_base(d, 8, 'A'));
 	if (t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'A')), t, c);
-	return (ret);
-}
-
-int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
-{
-	char		ch;
-	int			ret;
-
-	ret = 0;
-	if (!(ch = (char)va_arg(conv, int)) && ch != 0)
-		return (null_case());
-	if (!t->o_minus && t->width)
-		ret += handle_width(1, t, c);
-	ft_putchar(ch);
-	ret += 1;
-	if (t->o_minus && t->width)
-		ret += handle_width(1, t, c);
 	return (ret);
 }
 

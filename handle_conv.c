@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/05 14:58:20 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 16:59:05 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int					handle_width(int len, t_data *t, t_conv *c)
 	char		ch;
 
 	ch = ' ';
-	if (t->o_zero)
+	if (t->o_zero && !t->o_minus && (c->o || c->x))
 		ch = '0';
 	i = t->width - len;
 	if (t->prec > len && len != 0)
@@ -113,7 +113,8 @@ int					handle_o_zero_d(int d, t_data *t, t_conv *c)
 	else if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
 		return (0);
 	else if (t->o_zero && t->width && d < 0)
-		return (t->width - (int)ft_strlen(ft_itoa(d)) + 1);
+		return (c->d ? ft_strlen((ft_itoa(d))) :
+				t->width - (int)ft_strlen(ft_itoa(d)) + 1);
 	else
 		ft_putnbr(d);
 	return (ft_strlen(ft_itoa(d)));

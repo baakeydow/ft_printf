@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/05 14:50:52 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 17:12:38 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
 		return (handle_false_type(c, t, cpy));
 	if (c->s)
 		return (handle_s(conv, t, c));
+	if (c->S)
+		return (handle_s_maj(conv, t, c));
 	if (c->d || c->i)
 		return (handle_d(conv, t, c));
 	if (c->u)
@@ -85,7 +87,12 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("{%-10%}\n");<]*/
 	/*[>ft_printf("%.3d", 0);<]*/
 	/*[>ft_printf("%u", 4294967295);<]*/
-	/*ft_printf("%05d", -42);*/
+	/*[>ft_printf("%05d", -42);<]*/
+	/*[>ft_printf("%-05o", 2500);<]*/
+	/*[>ft_printf("%-10.5o", 2500);<]*/
+	/*[>ft_printf("%S", L"米");<]*/
+	/*ft_printf("%C", L'猫');*/
+	/*[>ft_printf("%d\n", ft_printf("{%010d}", -42));<]*/
 	/*[>ft_printf("%#-08x", 42);<]*/
 	/*[>ft_printf("%5.2s is a string", "");<]*/
 	/*return (0);*/

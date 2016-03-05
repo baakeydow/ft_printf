@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 23:35:59 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/04 17:50:49 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 17:02:30 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ char				*ft_widestr_2_reg(wchar_t *src)
 			return (NULL);
 		if (!(str = ft_strjoin(ante, post)))
 			return (NULL);
-		(*src)++;
+		src++;
 		ft_strdel(&ante);
 		ft_strdel(&post);
 	}
