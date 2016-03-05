@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/03 19:23:02 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 11:45:48 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int					handle_s(va_list conv, t_data *t, t_conv *c)
 		ret += handle_width(len, t, c);
 	ret += prec_str(t, str, c);
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(str), t, c);
+		ret += handle_width(len, t, c);
 	return (ret);
 }
 
@@ -59,26 +59,33 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 int					handle_x(va_list conv, t_data *t, t_conv *c)
 {
 	long int	d;
+	int			sharp;
 	int			ret;
 
 	ret = 0;
+	sharp = 0;
+	if (t->o_diez)
+		sharp = 2;
 	if (!(d = va_arg(conv, long int)) && d != 0)
 		return (null_case());
-	if (d == 0 && !t->prec && t->o_diez && return_char(c->b_t_conv, '.'))
+	if (d == 0 && !t->prec && !t->width && return_char(c->b_t_conv, '.'))
 		return (0);
-	if (!t->o_minus && t->width && !t->prec)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t, c);
+	if (!t->o_minus && t->width && !t->o_zero)
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + sharp, t, c);
 	if (t->o_diez && d != 0)
 	{
 		ret += 2;
 		ft_putstr("0x");
 	}
+	if (!t->o_minus && t->width && t->o_zero)
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + sharp, t, c);
 	if (t->prec)
 		ret += handle_o_point(ft_strlen(ft_itoa_base(d, 16, 'a')), t, d);
-	ft_putstr(ft_nbr_to_char(d, 16, 'a'));
+	/*if (!(d == 0 && !t->prec && return_char(c->b_t_conv, '.')))*/
+		ft_putstr(ft_itoa_base(d, 16, 'a'));
 	ret += ft_strlen(ft_itoa_base(d, 16, 'a'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')), t, c);
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + sharp, t, c);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/03 10:41:49 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 11:11:17 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int						handle_width(int len, t_data *t, t_conv *c)
 	if (t->o_zero)
 		ch = '0';
 	i = t->width - len;
-	if (t->prec > len)
+	if (t->prec > len && len != 0)
 		i = t->width - t->prec;
 	if (c->s && t->width > len && !t->prec && return_char(c->b_t_conv, '.'))
 		i = t->prec;
