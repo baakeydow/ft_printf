@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/04 17:50:04 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/05 14:14:11 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int				find_width(char *str);
 int				find_prec(char *str);
 int				prec_str(t_data *t, char *str, t_conv *c);
 int				len_str(t_data *t, char *str);
-int				handle_width_d(int len_conv, t_data *t, int d);
+int				handle_width_d(int len_conv, t_data *t, int d, t_conv *c);
 int				handle_width(int len_conv, t_data *t, t_conv *c);
 int				handle_o_point(int len_conv, t_data *t, int d);
-int				handle_o_zero_d(int d, t_data *t);
+int				handle_o_zero_d(int d, t_data *t, t_conv *c);
 int				handle_o_space(int d, t_data *t, t_conv *c);
 int				handle_false_type(t_conv *c, t_data *t, char *cpy);
 int				handle_s(va_list conv, t_data *t, t_conv *c);
