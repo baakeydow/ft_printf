@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 14:05:17 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/06 15:18:10 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 # include <wchar.h>
+# include <limits.h>
 
 typedef struct	s_data
 {
