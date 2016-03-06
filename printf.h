@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/05 17:02:24 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/06 14:05:17 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char			find_o_zero(char *fmt);
 int				find_width(char *str);
 int				find_prec(char *str);
 int				prec_str(t_data *t, char *str, t_conv *c);
-int				len_str(t_data *t, char *str);
+int				len_str(t_data *t, char *str, t_conv *c);
 int				handle_width_d(int len_conv, t_data *t, int d, t_conv *c);
 int				handle_width(int len_conv, t_data *t, t_conv *c);
 int				handle_o_point(int len_conv, t_data *t, int d);

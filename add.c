@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/05 11:26:20 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/06 14:05:14 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ int					prec_str(t_data *t, char *str, t_conv *c)
 	return(ft_strlen(str));
 }
 
-int					len_str(t_data *t, char *str)
+int					len_str(t_data *t, char *str, t_conv *c)
 {
-	if (!t->prec || (int)ft_strlen(str) < t->prec)
-		return ((int)ft_strlen(str));
-	return (t->prec);
+	if ((!t->prec && return_char(c->b_t_conv, '.')) ||
+			(int)ft_strlen(str) < t->prec)
+		return (t->prec);
+	return ((int)ft_strlen(str));
 }
 
 void				ft_putnbr_u(unsigned int n)
