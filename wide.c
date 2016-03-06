@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 16:06:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 14:05:09 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/06 17:31:19 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int					handle_s_maj(va_list conv, t_data *t, t_conv *c)
 	if (!(str = va_arg(conv, wchar_t *)))
 		return (null_case_s(t));
 	len = len_str(t, ft_widestr_2_reg(str), c);
-	if (len < t->prec && !t->width)
-		len = t->prec;
 	if (!t->o_minus && t->width)
 		ret += handle_width(len, t, c);
 	ret += prec_str(t, ft_widestr_2_reg(str), c);

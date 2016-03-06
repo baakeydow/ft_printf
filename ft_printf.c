@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 16:02:02 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/06 17:49:55 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("%S", L"米");<]*/
 	/*[>ft_printf("%C", L'猫');<]*/
 	/*[>ft_printf("{%05.c}", 0);<]*/
-	/*[>ft_printf("%.4O", 42);<]*/
-	/*ft_printf("%8.4x", 424242424);*/
+	/*ft_printf("%15.4s", "42");*/
 	/*[>ft_printf("%d\n", ft_printf("{%010d}", -42));<]*/
+	/*[>ft_printf("{%30S}", L"我是一只猫。");<]*/
 	/*[>ft_printf("%#-08x", 42);<]*/
 	/*[>ft_printf("%5.2s is a string", "");<]*/
 	/*return (0);*/

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 14:05:14 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/06 17:31:23 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int					prec_str(t_data *t, char *str, t_conv *c)
 	if (t->prec || return_char(c->b_t_conv, '.'))
 	{
 		i = t->prec;
-		if (i >= (int)ft_strlen(str))
+		if (i > (int)ft_strlen(str))
 		{
 			ft_putstr(str);
 			return ((int)ft_strlen(str));
@@ -56,7 +56,7 @@ int					prec_str(t_data *t, char *str, t_conv *c)
 int					len_str(t_data *t, char *str, t_conv *c)
 {
 	if ((!t->prec && return_char(c->b_t_conv, '.')) ||
-			(int)ft_strlen(str) < t->prec)
+			((int)ft_strlen(str) > t->prec && return_char(c->b_t_conv, '.')))
 		return (t->prec);
 	return ((int)ft_strlen(str));
 }
