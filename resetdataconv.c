@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:56:25 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/08 21:23:09 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 00:06:42 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_data				*wipe_data(void)
 
 	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
+	ptr->cpy = NULL;
 	ptr->o_minus = '\0';
 	ptr->o_plus = '\0';
 	ptr->o_diez = '\0';

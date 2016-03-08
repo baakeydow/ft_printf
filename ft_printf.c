@@ -6,41 +6,81 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/08 21:39:21 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 00:53:59 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)
+/*static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)*/
+/*{*/
+	/*if (*cpy == '%')*/
+		/*return (handle_glued(t));*/
+	/*if (false_type(c))*/
+		/*return (handle_false_type(c, t));*/
+	/*if (c->s)*/
+		/*return (handle_s(conv, t, c));*/
+	/*if (c->S)*/
+		/*return (handle_s_maj(conv, t, c));*/
+	/*if (c->d || c->i)*/
+		/*return (tab[0].f(conv, t, c));*/
+	/*if (c->u)*/
+		/*return (handle_u(conv, t, c));*/
+	/*if (c->c)*/
+		/*return (handle_c(conv, t, c));*/
+	/*if (c->C)*/
+		/*return (handle_c_maj(conv, t, c));*/
+	/*if (c->x)*/
+		/*return (handle_x(conv, t, c));*/
+	/*if (c->X)*/
+		/*return (handle_x_maj(conv, t, c));*/
+	/*if (c->p)*/
+		/*return (handle_p(conv, t, c));*/
+	/*if (c->o)*/
+		/*return (handle_o(conv, t, c));*/
+	/*if (c->O)*/
+		/*return (handle_o_maj(conv, t, c));*/
+	/*return (0);*/
+/*}*/
+
+t_va_arg				tab[TAB_SIZE] = {{&handle_s, 's'},
+	{&handle_s_maj, 'S'}, {&handle_p, 'p'}, {&handle_d, 'd'},
+	{&handle_d_maj, 'D'}, {&handle_i, 'i'}, {&handle_o, 'o'},
+	{&handle_o_maj, 'O'}, {&handle_u, 'u'}, {&handle_u_maj, 'U'},
+	{&handle_x, 'x'}, {&handle_x_maj, 'X'}, {&handle_c, 'c'},
+	{&handle_c_maj, 'C'}};
+
+static int				handle(va_list conv, t_va_arg tab[TAB_SIZE], t_data *t, t_conv *c)
 {
-	if (*cpy == '%')
+	int			i;
+
+	i = 0;
+	if (*(t->cpy) == '%')
 		return (handle_glued(t));
 	if (false_type(c))
-		return (handle_false_type(c, t, cpy));
-	if (c->s)
-		return (handle_s(conv, t, c));
-	if (c->S)
-		return (handle_s_maj(conv, t, c));
-	if (c->d || c->i)
-		return (handle_d(conv, t, c));
-	if (c->u)
-		return (handle_u(conv, t, c));
-	if (c->c)
-		return (handle_c(conv, t, c));
-	if (c->C)
-		return (handle_c_maj(conv, t, c));
-	if (c->x)
-		return (handle_x(conv, t, c));
-	if (c->X)
-		return (handle_x_maj(conv, t, c));
-	if (c->p)
-		return (handle_p(conv, t, c));
-	if (c->o)
-		return (handle_o(conv, t, c));
-	if (c->O)
-		return (handle_o_maj(conv, t, c));
+		return (handle_false_type(c, t));
+	while (i < TAB_SIZE)
+	{
+		if (tab[i].c == return_char(c->b_t_conv, tab[i].c))
+			return (tab[i].f(conv, t, c));
+		i++;
+	}
 	return (0);
+}
+
+int						handle_d_maj(va_list conv, t_data *t, t_conv *c)
+{
+	return (handle_d(conv, t, c));
+}
+
+int						handle_i(va_list conv, t_data *t, t_conv *c)
+{
+	return (handle_d(conv, t, c));
+}
+
+int						handle_u_maj(va_list conv, t_data *t, t_conv *c)
+{
+	return (handle_u(conv, t, c));
 }
 
 int						ft_printf(const char *restrict format, ...)
@@ -61,7 +101,7 @@ int						ft_printf(const char *restrict format, ...)
 		{
 			t = init(format);
 			c = init_conv(format);
-			ret += handle(conv, (char *)format, t, c);
+			ret += handle(conv, tab, t, c);
 			format = after_t_conv(format, c, t);
 			c = wipe_conv();
 			t = wipe_data();

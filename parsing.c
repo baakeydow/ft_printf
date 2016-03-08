@@ -6,27 +6,27 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/08 21:39:21 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 00:53:59 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int						handle_false_type(t_conv *c, t_data *t, char *cpy)
+int						handle_false_type(t_conv *c, t_data *t)
 {
 	int			ret;
 
 	ret = 0;
-	if (percent_nbr(before_t_conv(cpy)) && !t->o_minus && !t->width)
+	if (percent_nbr(before_t_conv(t->cpy)) && !t->o_minus && !t->width)
 		return (handle_glued(t));
 	if (!t->o_minus && t->width)
 	{
 		ret += handle_width(1, t, c) + 1;
-		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
+		ft_putchar(before_t_conv(t->cpy)[ft_strlen(before_t_conv(t->cpy)) - 1]);
 	}
 	if (t->o_minus && t->width)
 	{
-		ft_putchar(before_t_conv(cpy)[ft_strlen(before_t_conv(cpy)) - 1]);
+		ft_putchar(before_t_conv(t->cpy)[ft_strlen(before_t_conv(t->cpy)) - 1]);
 		ret += handle_width(1, t, c) + 1;
 	}
 	return (ret);
@@ -80,6 +80,7 @@ t_data					*init(const char *cpy)
 
 	if (!(ptr = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
+	ptr->cpy = ft_strdup(cpy);
 	ptr->o_minus = return_char(before_t_conv(cpy), '-');
 	ptr->o_plus = return_char(before_t_conv(cpy), '+');
 	ptr->o_diez = return_char(before_t_conv(cpy), '#');

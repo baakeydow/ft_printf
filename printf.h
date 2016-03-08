@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/08 21:39:21 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 00:55:53 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <limits.h>
+# define TAB_SIZE 14
 
 typedef struct	s_data
 {
+	char		*cpy;
 	char		o_minus;
 	char		o_plus;
 	char		o_diez;
@@ -53,6 +55,13 @@ typedef struct	s_conv
 	char		C;
 }				t_conv;
 
+typedef struct	s_va_arg
+{
+	int			(*f)(va_list conv, struct s_data *t, struct s_conv *c);
+	char		c;
+}				t_va_arg;
+
+t_va_arg		tab[TAB_SIZE];
 int				ft_printf(const char *format, ...);
 char			*ft_widechar_2_reg(wchar_t wide);
 char			*ft_widestr_2_reg(wchar_t *src);
@@ -86,16 +95,19 @@ int				find_width(char *str);
 int				find_prec(char *str);
 int				prec_str(t_data *t, char *str, t_conv *c);
 int				len_str(t_data *t, char *str, t_conv *c);
+int				handle_false_type(t_conv *c, t_data *t);
 int				handle_width_d(int len_conv, t_data *t, int d, t_conv *c);
 int				handle_width(int len_conv, t_data *t, t_conv *c);
 int				handle_o_point(int len_conv, t_data *t, int d);
 int				handle_o_zero_d(int d, t_data *t, t_conv *c);
 int				handle_o_space(int d, t_data *t, t_conv *c);
-int				handle_false_type(t_conv *c, t_data *t, char *cpy);
 int				handle_s(va_list conv, t_data *t, t_conv *c);
 int				handle_s_maj(va_list conv, t_data *t, t_conv *c);
 int				handle_d(va_list conv, t_data *t, t_conv *c);
+int				handle_d_maj(va_list conv, t_data *t, t_conv *c);
+int				handle_i(va_list conv, t_data *t, t_conv *c);
 int				handle_u(va_list conv, t_data *t, t_conv *c);
+int				handle_u_maj(va_list conv, t_data *t, t_conv *c);
 void			ft_putnbr_u(unsigned int n);
 int				handle_c(va_list conv, t_data *t, t_conv *c);
 int				handle_c_maj(va_list conv, t_data *t, t_conv *c);
