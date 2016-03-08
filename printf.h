@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 16:51:02 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/08 21:39:21 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ typedef struct	s_data
 	char		o_space;
 	int			width;
 	int			prec;
-	char		*length;
+	int			h;
+	int			hh;
+	int			l;
+	int			ll;
+	int			j;
+	int			z;
 }				t_data;
 
 typedef struct	s_conv
@@ -53,6 +58,12 @@ char			*ft_widechar_2_reg(wchar_t wide);
 char			*ft_widestr_2_reg(wchar_t *src);
 char			*ft_itoa_base(long int nbr, int base, char c);
 char			*ft_nbr_to_char(int nbr, int base, char c);
+int				find_h(char *str);
+int				find_hh(char *str);
+int				find_l(char *str);
+int				find_ll(char *str);
+int				find_j(char *str);
+int				find_z(char *str);
 int				false_type(t_conv *c);
 int				printchar(const char **cpy);
 int				handle_no_p_cent(const char *cpy);

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 17:31:23 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/08 21:32:09 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,18 @@ void				ft_putnbr_u(unsigned int n)
 	}
 	else
 		ft_putchar(48 + n);
+}
+
+int					find_z(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 'z')
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: bndao <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/21 20:55:31 by bndao             #+#    #+#              #
-#    Updated: 2016/03/05 16:09:20 by bndao            ###   ########.fr        #
+#    Updated: 2016/03/08 21:30:36 by bndao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ PTF += resetdataconv.c
 PTF += ft_itoa_base.c
 PTF += add.c
 PTF += wide.c
+PTF += length.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJECTS += $(PTF:.c=.o)

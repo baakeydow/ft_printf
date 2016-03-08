@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 16:51:02 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/08 21:39:21 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,12 @@ t_data					*init(const char *cpy)
 	ptr->o_space = return_char(before_t_conv(cpy), ' ');
 	ptr->width = find_width(before_t_conv(cpy));
 	ptr->prec = find_prec(before_t_conv(cpy));
-	ptr->length = "0";
+	ptr->h = find_h(before_t_conv(cpy));
+	ptr->hh = find_hh(before_t_conv(cpy));
+	ptr->l = find_l(before_t_conv(cpy));
+	ptr->ll = find_ll(before_t_conv(cpy));
+	ptr->j = find_j(before_t_conv(cpy));
+	ptr->z = find_z(before_t_conv(cpy));
 	return (ptr);
 }
 
