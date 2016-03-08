@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 23:35:59 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/05 17:02:30 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/08 04:52:02 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,8 @@ char				*ft_nbr_to_char(int nbr, int base, char c)
 			str[i] = '1';
 		i++;
 	}
-	ft_putendl(str);
 	i = binary_to_dec(str);
 	i = i + 1;
-	str = ft_itoa_base(i, 2, c);
-	ft_putendl(str);
-	ft_putnbr(i);
-	ft_putchar('\n');
 	return (ft_itoa_base(i, base, c));
 }
 

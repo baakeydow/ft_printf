@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/06 17:49:48 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/08 04:54:30 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 
 int					handle_x(va_list conv, t_data *t, t_conv *c)
 {
-	long int	d;
+	unsigned long int	d;
 	int			sharp;
 	int			ret;
 
@@ -71,7 +71,7 @@ int					handle_x(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 2;
-	if (!(d = va_arg(conv, long int)) && d != 0)
+	if (!(d = (unsigned long int)va_arg(conv, long int)) && d != 0)
 		return (null_case());
 	if (d == 0 && !t->prec && !t->width && return_char(c->b_t_conv, '.'))
 		return (0);
