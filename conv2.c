@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 03:46:46 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 13:18:18 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 15:07:35 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int					handle_u(va_list conv, t_data *t, t_conv *c)
 	int			ret;
 
 	ret = 0;
-	d = size_u(conv, t, c);
+	d = size_uoxX(conv, t, c);
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_ull(d)), t, c);
 	if (!t->o_minus && t->prec)
-		ret += handle_o_point(ft_strlen(ft_itoa_ull(d)), t, d);
+		ret += handle_o_point_u(ft_strlen(ft_itoa_ull(d)), t);
 	if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
 		return (0);
 	ft_putnbr_u(d);
@@ -34,7 +34,7 @@ int					handle_u(va_list conv, t_data *t, t_conv *c)
 
 int					handle_o(va_list conv, t_data *t, t_conv *c)
 {
-	long int	d;
+	uintmax_t	d;
 	int			sharp;
 	int			ret;
 
@@ -42,24 +42,23 @@ int					handle_o(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 1;
-	if (!(d = va_arg(conv, long int)) && d != 0)
-		return (null_case());
+	d = size_uoxX(conv, t, c);
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'a')) + sharp, t, c);
+		ret += handle_width(ft_strlen(ft_uitoa_base(d, 8, 'a')) + sharp, t, c);
 	if (t->o_diez && d != 0)
 	{
 		ret += 1;
 		ft_putchar('0');
 	}
-	if (!t->o_minus && t->prec && d >= 0)
-		ret += handle_o_point(ft_strlen(ft_itoa_base(d, 8, 'a')) + sharp, t, d);
+	if (!t->o_minus && t->prec)
+		ret += handle_o_point_u(ft_strlen(ft_uitoa_base(d, 8, 'a')) + sharp, t);
 	if (!(d == 0 && !t->prec && return_char(c->b_t_conv, '.') && !t->o_diez))
-		ft_putstr(ft_itoa_base(d, 8, 'a'));
+		ft_putstr(ft_uitoa_base(d, 8, 'a'));
 	else
 		ret -= 1;
-	ret += ft_strlen(ft_itoa_base(d, 8, 'a'));
+	ret += ft_strlen(ft_uitoa_base(d, 8, 'a'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 8, 'a')) + sharp, t, c);
+		ret += handle_width(ft_strlen(ft_uitoa_base(d, 8, 'a')) + sharp, t, c);
 	return (ret);
 }
 
@@ -96,7 +95,7 @@ int					handle_o_maj(va_list conv, t_data *t, t_conv *c)
 
 int					handle_x_maj(va_list conv, t_data *t, t_conv *c)
 {
-	long int	d;
+	uintmax_t	d;
 	int			sharp;
 	int			ret;
 
@@ -104,27 +103,26 @@ int					handle_x_maj(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 2;
-	if (!(d = va_arg(conv, long int)) && d != 0)
-		return (null_case());
+	d = size_uoxX(conv, t, c);
 	if (d == 0 && !t->prec && !t->width && return_char(c->b_t_conv, '.'))
 		return (0);
 	if (!t->o_minus && t->width && !t->o_zero)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'A')) + sharp, t, c);
+		ret += handle_width(ft_strlen(ft_uitoa_base(d, 16, 'A')) + sharp, t, c);
 	if (t->o_diez && d != 0)
 	{
 		ret += 2;
 		ft_putstr("0X");
 	}
 	if (!t->o_minus && t->width && t->o_zero)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'A')) + sharp, t, c);
+		ret += handle_width(ft_strlen(ft_uitoa_base(d, 16, 'A')) + sharp, t, c);
 	if (t->prec)
-		ret += handle_o_point(ft_strlen(ft_itoa_base(d, 16, 'A')), t, d);
+		ret += handle_o_point_u(ft_strlen(ft_uitoa_base(d, 16, 'A')), t);
 	if (!(d == 0 && !t->prec && return_char(c->b_t_conv, '.')))
-		ft_putstr(ft_itoa_base(d, 16, 'A'));
+		ft_putstr(ft_uitoa_base(d, 16, 'A'));
 	else
 		ft_putchar(' ');
-	ret += ft_strlen(ft_itoa_base(d, 16, 'A'));
+	ret += ft_strlen(ft_uitoa_base(d, 16, 'A'));
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'A')) + sharp, t, c);
+		ret += handle_width(ft_strlen(ft_uitoa_base(d, 16, 'A')) + sharp, t, c);
 	return (ret);
 }

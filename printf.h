@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 13:10:48 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 15:07:35 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ typedef struct	s_va_arg
 
 t_va_arg		tab[TAB_SIZE];
 intmax_t		size_d(va_list conv, t_data *t, t_conv *c);
-uintmax_t		size_u(va_list conv, t_data *t, t_conv *c);
+uintmax_t		size_uoxX(va_list conv, t_data *t, t_conv *c);
 int				ft_printf(const char *format, ...);
 char			*ft_widechar_2_reg(wchar_t wide);
 char			*ft_widestr_2_reg(wchar_t *src);
 char			*ft_itoa_base(long long int nbr, int base, char c);
+char			*ft_uitoa_base(uintmax_t nbr, int base, char c);
 char			*ft_itoa_ll(intmax_t nbr);
 char			*ft_itoa_ull(uintmax_t nbr);
 void			ft_putnbr_u(uintmax_t n);
@@ -106,7 +107,8 @@ int				handle_false_type(t_conv *c, t_data *t);
 int				handle_width_d(int len, t_data *t, intmax_t d, t_conv *c);
 int				handle_width_u(int len, t_data *t, uintmax_t d, t_conv *c);
 int				handle_width(int len_conv, t_data *t, t_conv *c);
-int				handle_o_point(intmax_t len_conv, t_data *t, intmax_t d);
+int				handle_o_point(int len_conv, t_data *t, intmax_t d);
+int				handle_o_point_u(int len_conv, t_data *t);
 int				handle_o_zero_d(intmax_t d, t_data *t, t_conv *c);
 int				handle_o_space(intmax_t d, t_data *t, t_conv *c);
 int				handle_s(va_list conv, t_data *t, t_conv *c);

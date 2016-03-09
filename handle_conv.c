@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 12:57:21 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 15:07:35 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int					handle_width_u(int len_conv, t_data *t, uintmax_t d, t_conv *c)
 	return (ret);
 }
 
-int					handle_o_point(intmax_t len_conv, t_data *t, intmax_t d)
+int					handle_o_point(int len_conv, t_data *t, intmax_t d)
 {
 	int			i;
 	int			ok;
@@ -112,6 +112,21 @@ int					handle_o_point(intmax_t len_conv, t_data *t, intmax_t d)
 		i--;
 	}
 	return (t->prec - len_conv - ok);
+}
+
+int					handle_o_point_u(int len_conv, t_data *t)
+{
+	int			i;
+
+	i = t->prec - len_conv;
+	if (i <= 0)
+		return (0);
+	while (i)
+	{
+		ft_putchar('0');
+		i--;
+	}
+	return (t->prec - len_conv);
 }
 
 int					handle_o_zero_d(intmax_t d, t_data *t, t_conv *c)
