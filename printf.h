@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 00:55:53 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 04:17:55 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct	s_va_arg
 }				t_va_arg;
 
 t_va_arg		tab[TAB_SIZE];
+unsigned long long int size_d(va_list conv, t_data *t);
 int				ft_printf(const char *format, ...);
 char			*ft_widechar_2_reg(wchar_t wide);
 char			*ft_widestr_2_reg(wchar_t *src);

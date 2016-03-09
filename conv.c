@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 00:53:59 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 04:17:23 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int					handle_s(va_list conv, t_data *t, t_conv *c)
 
 int					handle_d(va_list conv, t_data *t, t_conv *c)
 {
-	int			d;
-	int			space;
-	int			ret;
-	int			plus;
+	long long int	d;
+	int				space;
+	int				ret;
+	int				plus;
 
 	ret = 0;
 	plus = 0;
@@ -104,9 +104,11 @@ int					handle_p(va_list conv, t_data *t, t_conv *c)
 	ret = 0;
 	if (!(d = va_arg(conv, long int)) && d != 0)
 		return (null_case());
-	if (!t->o_minus && t->width)
+	if (!t->o_minus && t->width && (t->prec || !t->o_zero))
 		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t, c);
 	ft_putstr("0x");
+	if (!t->o_minus && t->width && !t->prec && t->o_zero)
+		ret += handle_width(ft_strlen(ft_itoa_base(d, 16, 'a')) + 2, t, c);
 	if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
 		return (2);
 	if (t->prec)
