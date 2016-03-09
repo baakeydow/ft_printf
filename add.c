@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 07:54:36 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 12:12:04 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int					len_str(t_data *t, char *str, t_conv *c)
 	return ((int)ft_strlen(str));
 }
 
-void				ft_putnbr_u(unsigned int n)
+void				ft_putnbr_u(uintmax_t n)
 {
-   if (n > 4294967295)
-		ft_putstr("-1");
+	if (n > ULONG_MAX)
+		ft_putstr("18446744073709551615");
 	if (n > 9)
 	{
 		ft_putnbr_u(n / 10);

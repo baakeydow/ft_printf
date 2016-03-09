@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 03:46:46 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 00:53:59 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 13:18:18 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 int					handle_u(va_list conv, t_data *t, t_conv *c)
 {
-	size_t		d;
+	uintmax_t	d;
 	int			ret;
 
 	ret = 0;
-	if (!(d = va_arg(conv, size_t)) && d != 0)
-		return (null_case());
+	d = size_u(conv, t, c);
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_itoa_base(d, 10, 'a')), t, c);
+		ret += handle_width(ft_strlen(ft_itoa_ull(d)), t, c);
 	if (!t->o_minus && t->prec)
-		ret += handle_o_point(ft_strlen(ft_itoa_base(d, 10, 'a')), t, d);
+		ret += handle_o_point(ft_strlen(ft_itoa_ull(d)), t, d);
 	if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
 		return (0);
 	ft_putnbr_u(d);
-	ret += ft_strlen(ft_itoa_base(d, 10, 'a'));
+	ret += ft_strlen(ft_itoa_ull(d));
 	if (t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa(d)), t, d, c);
+		ret += handle_width_u(ft_strlen(ft_itoa_ull(d)), t, d, c);
 	return (ret);
 }
 

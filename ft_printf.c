@@ -6,12 +6,11 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 07:40:42 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 13:38:46 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
 
 t_va_arg				tab[TAB_SIZE] = {{&handle_s, 's'},
 	{&handle_s_maj, 'S'}, {&handle_p, 'p'}, {&handle_d, 'd'},
@@ -107,8 +106,10 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("{% C}", 0);<]*/
 	/*[>ft_printf("%d\n", ft_printf("{%010d}", -42));<]*/
 	/*[>ft_printf("{%30S}", L"我是一只猫。");<]*/
-	/*ft_printf("%D", 9223372036854775807);*/
 	/*[>ft_printf("%#-08x", 42);<]*/
+	/*[>ft_printf("{%+03d}", 0);<]*/
+	/*ft_printf("%U", ULONG_MAX / 2);*/
+	/*[>ft_printf("%ld", (long)INT_MAX + 1);<]*/
 	/*[>ft_printf("%5.2s is a string", "");<]*/
 	/*return (0);*/
 /*}*/

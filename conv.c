@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 07:56:27 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 11:45:42 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 	if ((ret == 1 && !t->o_plus) || t->o_space)
 		space = 1;
 	if (!t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa_ll(d) + plus + space), t, d, c);
+		ret += handle_width_d(ft_strlen(ft_itoa_ll(d)) + plus + space, t, d, c);
 	if (!t->o_minus && t->prec && d >= 0)
 		ret += handle_o_point(ft_strlen(ft_itoa_ll(d)), t, d);
 	ret += handle_o_zero_d(d, t, c);
@@ -125,11 +125,10 @@ int					handle_c(va_list conv, t_data *t, t_conv *c)
 	int			ret;
 
 	ret = 0;
-	if (!(ch = (char)va_arg(conv, int)) && ch != 0)
-		return (null_case());
+	ch = (char)va_arg(conv, int);
 	if (!t->o_minus && t->width)
 		ret += handle_width(1, t, c);
-	ft_putchar(ch);
+	write(1, &ch, 1);
 	ret += 1;
 	if (t->o_minus && t->width)
 		ret += handle_width(1, t, c);

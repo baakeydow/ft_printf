@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 07:13:46 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 12:57:21 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int					handle_width(int len, t_data *t, t_conv *c)
 	return (t->prec > len && !c->s ? t->width - t->prec : t->width - len);
 }
 
-int					handle_width_d(intmax_t len_conv, t_data *t, intmax_t d, t_conv *c)
+int					handle_width_d(int len_conv, t_data *t, intmax_t d, t_conv *c)
 {
 	int			i;
 	char		ch;
@@ -71,6 +71,27 @@ int					handle_width_d(intmax_t len_conv, t_data *t, intmax_t d, t_conv *c)
 		d = -d;
 		ft_putnbr(d);
 	}
+	return (ret);
+}
+
+int					handle_width_u(int len_conv, t_data *t, uintmax_t d, t_conv *c)
+{
+	int			i;
+	char		ch;
+	int			ret;
+
+	ch = ' ';
+	if (t->o_zero && !t->o_minus)
+		ch = '0';
+	ret = 0;
+	ret += t->width - len_conv;
+	if (t->prec > len_conv)
+		ret = t->width - (len_conv - (len_conv - t->prec));
+	i = ret;
+	if (i < 0 || (t->width > t->prec && return_char(c->b_t_conv, '.') && d == 0))
+		return (0);
+	while (i--)
+		ft_putchar(ch);
 	return (ret);
 }
 

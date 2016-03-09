@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 23:35:59 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 08:05:40 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 13:09:00 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,33 @@ char			*ft_itoa_ll(intmax_t nbr)
 	}
 	if (!pos)
 		str_number[i++] = '-';
+	str_number[i] = '\0';
+	return (ft_strrev(str_number));
+}
+
+static char		*s_s(char **str, size_t *i)
+{
+	*i = 0;
+	if (!((*str) = (char *)malloc(sizeof(char) * 19)))
+		return (NULL);
+	return (*str);
+}
+
+char			*ft_itoa_ull(uintmax_t nbr)
+{
+	size_t	i;
+	char	*str_number;
+
+	if (!(s_s(&str_number, &i)))
+		return (NULL);
+	if (nbr == 0)
+		return (ft_strdup("0"));
+	while (nbr)
+	{
+		str_number[i] = (nbr) % 10 + '0';
+		nbr = nbr / 10;
+		i++;
+	}
 	str_number[i] = '\0';
 	return (ft_strrev(str_number));
 }
