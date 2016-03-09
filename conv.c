@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 04:17:23 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 07:56:27 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int					handle_s(va_list conv, t_data *t, t_conv *c)
 
 int					handle_d(va_list conv, t_data *t, t_conv *c)
 {
-	long long int	d;
+	intmax_t		d;
 	int				space;
 	int				ret;
 	int				plus;
@@ -40,8 +40,7 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 	ret = 0;
 	plus = 0;
 	space = 0;
-	if (!(d = va_arg(conv, int)) && d != 0)
-		return (null_case());
+	d = size_d(conv, t, c);
 	if (d >= 0 && t->o_plus)
 	{
 		ft_putchar('+');
@@ -52,12 +51,12 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 	if ((ret == 1 && !t->o_plus) || t->o_space)
 		space = 1;
 	if (!t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa(d)) + plus + space, t, d, c);
+		ret += handle_width_d(ft_strlen(ft_itoa_ll(d) + plus + space), t, d, c);
 	if (!t->o_minus && t->prec && d >= 0)
-		ret += handle_o_point(ft_strlen(ft_itoa(d)), t, d);
+		ret += handle_o_point(ft_strlen(ft_itoa_ll(d)), t, d);
 	ret += handle_o_zero_d(d, t, c);
 	if (t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa(d)), t, d, c);
+		ret += handle_width_d(ft_strlen(ft_itoa_ll(d)), t, d, c);
 	return (ret);
 }
 

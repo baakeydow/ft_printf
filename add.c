@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 04:18:14 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 07:54:36 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,29 @@ void				ft_putnbr_u(unsigned int n)
 	{
 		ft_putnbr_u(n / 10);
 		ft_putnbr_u(n % 10);
+	}
+	else
+		ft_putchar(48 + n);
+}
+
+void				ft_putnbr_ll(intmax_t n)
+{
+	if (n > LLONG_MAX)
+		ft_putstr("-1");
+	if (n <= LLONG_MIN)
+	{
+		ft_putstr("-9");
+		n = 223372036854775808;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_ll(n / 10);
+		ft_putnbr_ll(n % 10);
 	}
 	else
 		ft_putchar(48 + n);
