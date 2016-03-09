@@ -6,42 +6,12 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 00:53:59 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/09 02:35:31 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-/*static int				handle(va_list conv, char *cpy, t_data *t, t_conv *c)*/
-/*{*/
-	/*if (*cpy == '%')*/
-		/*return (handle_glued(t));*/
-	/*if (false_type(c))*/
-		/*return (handle_false_type(c, t));*/
-	/*if (c->s)*/
-		/*return (handle_s(conv, t, c));*/
-	/*if (c->S)*/
-		/*return (handle_s_maj(conv, t, c));*/
-	/*if (c->d || c->i)*/
-		/*return (tab[0].f(conv, t, c));*/
-	/*if (c->u)*/
-		/*return (handle_u(conv, t, c));*/
-	/*if (c->c)*/
-		/*return (handle_c(conv, t, c));*/
-	/*if (c->C)*/
-		/*return (handle_c_maj(conv, t, c));*/
-	/*if (c->x)*/
-		/*return (handle_x(conv, t, c));*/
-	/*if (c->X)*/
-		/*return (handle_x_maj(conv, t, c));*/
-	/*if (c->p)*/
-		/*return (handle_p(conv, t, c));*/
-	/*if (c->o)*/
-		/*return (handle_o(conv, t, c));*/
-	/*if (c->O)*/
-		/*return (handle_o_maj(conv, t, c));*/
-	/*return (0);*/
-/*}*/
 
 t_va_arg				tab[TAB_SIZE] = {{&handle_s, 's'},
 	{&handle_s_maj, 'S'}, {&handle_p, 'p'}, {&handle_d, 'd'},
