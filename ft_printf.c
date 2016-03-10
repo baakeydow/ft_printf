@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 15:07:35 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/10 09:44:47 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("%d\n", d);<]*/
 	/*[>ft_printf("%x\n", d);<]*/
 	/*[>ft_printf("{%-10%}\n");<]*/
-	/*ft_printf("%.4u", 424242);*/
+	/*[>ft_printf("%.4u", 424242);<]*/
+	/*[>ft_printf("%5.2s is a string", "");<]*/
 	/*[>ft_printf("%u", 4294967295);<]*/
 	/*[>ft_printf("%05d", -42);<]*/
 	/*[>ft_printf("%-05o", 2500);<]*/
@@ -106,7 +107,7 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("{% C}", 0);<]*/
 	/*[>ft_printf("%d\n", ft_printf("{%010d}", -42));<]*/
 	/*[>ft_printf("{%30S}", L"我是一只猫。");<]*/
-	/*[>ft_printf("%#-08x", 42);<]*/
+	/*[>ft_printf("%#d", 42);<]*/
 	/*[>ft_printf("{%+03d}", 0);<]*/
 	/*[>ft_printf("%U", ULONG_MAX / 2);<]*/
 	/*[>ft_printf("%ld", (long)INT_MAX + 1);<]*/

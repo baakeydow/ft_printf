@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 15:07:35 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/10 09:33:37 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int					prec_str(t_data *t, char *str, t_conv *c)
 	i = 0;
 	l = 0;
 	if (!ft_strlen(str) && t->width)
-		return (t->prec);
+		return (0);
 	if (t->prec || return_char(c->b_t_conv, '.'))
 	{
 		i = t->prec;
