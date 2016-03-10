@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 09:33:37 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/10 11:58:18 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ int					handle_o_zero_d(intmax_t d, t_data *t, t_conv *c)
 	}
 	else if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
 		return (0);
-	else if (t->o_zero && t->width && d < 0)
+	else if (t->o_zero && t->width && d < 0 && !t->o_minus)
 		return (c->d ? ft_strlen((ft_itoa_ll(d))) :
 				t->width - ft_strlen(ft_itoa_ll(d)) + 1);
 	else

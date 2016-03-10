@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 09:33:37 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/10 11:58:18 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,17 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 	intmax_t		d;
 	int				space;
 	int				ret;
+	int				prec;
 	int				plus;
 
 	ret = 0;
 	plus = 0;
 	space = 0;
 	d = size_d(conv, t, c);
+	if (t->prec > (int)ft_strlen(ft_itoa_ll(d)) && !t->width && t->o_space)
+		prec = t->prec;
+	else
+		prec = ft_strlen(ft_itoa_ll(d));
 	if (d >= 0 && t->o_plus)
 	{
 		ft_putchar('+');
@@ -51,12 +56,12 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 	if ((ret == 1 && !t->o_plus) || t->o_space)
 		space = 1;
 	if (!t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa_ll(d)) + plus + space, t, d, c);
-	if (!t->o_minus && t->prec && d >= 0)
-		ret += handle_o_point(ft_strlen(ft_itoa_ll(d)), t, d);
+		ret += handle_width_d(prec + plus + space, t, d, c);
+	if (t->prec && d >= 0)
+		ret += handle_o_point(prec, t, d);
 	ret += handle_o_zero_d(d, t, c);
 	if (t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa_ll(d)), t, d, c);
+		ret += handle_width_d(prec, t, d, c);
 	return (ret);
 }
 

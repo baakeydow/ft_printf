@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 03:46:46 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 09:33:37 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/10 11:58:18 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,15 @@ int					handle_o(va_list conv, t_data *t, t_conv *c)
 		ret += 1;
 		ft_putchar('0');
 	}
-	if (!t->o_minus && t->prec)
+	if (t->prec)
 		ret += handle_o_point_u(ft_strlen(ft_uitoa_base(d, 8, 'a')) + sharp, t);
-	if (!(d == 0 && !t->prec && return_char(c->b_t_conv, '.') && !t->o_diez))
-		ft_putstr(ft_uitoa_base(d, 8, 'a'));
+	if (!(d == 0 && !t->prec && return_char(c->b_t_conv, '.') && !t->o_diez && !t->width))
+	{
+		if (d == 0 && !t->o_diez && t->width)
+			ft_putchar(' ');
+		else
+			ft_putstr(ft_uitoa_base(d, 8, 'a'));
+	}
 	else
 		ret -= 1;
 	ret += ft_strlen(ft_uitoa_base(d, 8, 'a'));
