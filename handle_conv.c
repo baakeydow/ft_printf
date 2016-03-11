@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 22:52:27 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/11 23:04:43 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int					handle_width(int len, t_data *t, t_conv *c)
 
 	ch = ' ';
 	if (t->o_zero && !t->o_minus &&
-			(c->o || c->x || c->c || false_type(c) || c->S || c->X || c->s || c->p))
+			(c->o || c->x || c->c || false_type(c) || c->S || c->X || c->s || c->p || c->u))
 		ch = '0';
 	i = t->width - len;
 	if (t->prec > len && len != 0 && !c->s)
@@ -148,7 +148,11 @@ int					handle_o_zero_d(intmax_t d, t_data *t, t_conv *c)
 		return (ret);
 	}
 	else if (d == 0 && !t->prec && return_char(c->b_t_conv, '.'))
-		return (0);
+	{
+		if (t->width)
+			ft_putchar(' ');
+		return (t->width ? 1 : 0);
+	}
 	else if (t->o_zero && t->width && d < 0 && !t->o_minus)
 		return (c->d ? ft_strlen((ft_itoa_ll(d))) :
 				t->width - ft_strlen(ft_itoa_ll(d)) + 1);

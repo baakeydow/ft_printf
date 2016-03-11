@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 21:45:13 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 11:58:18 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/11 23:11:34 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ uintmax_t				size_uoxX(va_list conv, t_data *t, t_conv *c)
 		nbr = (unsigned short int)va_arg(conv, unsigned int);
 	else if (t->hh && c->O)
 		nbr = (unsigned short int)va_arg(conv, unsigned int);
-	else if (t->h)
+	else if (t->h && !(t->h && c->U))
 		nbr = (unsigned short int)va_arg(conv, unsigned int);
 	else if (t->hh)
 		nbr = (unsigned char)va_arg(conv, unsigned int);
-	else if (t->l || c->O)
+	else if (t->l || c->O || (t->h && c->U))
 		nbr = va_arg(conv, unsigned long int);
 	else if (t->ll || t->j || c->U)
 		nbr = va_arg(conv, uintmax_t);
