@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 21:30:23 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/11 22:52:27 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int					handle_width_d(int len_conv, t_data *t, intmax_t d, t_conv *c)
 		ch = '0';
 	ok = 0;
 	ret = 0;
-	if (d < 0 && t->o_zero && !t->o_minus)
+	if (d < 0 && t->o_zero && !t->o_minus && !t->prec)
 	{
 		ok = 1;
 		ft_putchar('-');
@@ -62,14 +62,13 @@ int					handle_width_d(int len_conv, t_data *t, intmax_t d, t_conv *c)
 	if (t->prec > len_conv)
 		ret = t->width - (len_conv - (len_conv - t->prec)) - ok;
 	i = ret;
-	if (i < 0 || (t->width > t->prec && return_char(c->b_t_conv, '.') && d == 0))
+	if (i < 0 || (t->width > t->prec && return_char(c->b_t_conv, '.') && d <= 0 && t->o_zero))
 		return (0);
-	if (t->o_plus && !t->o_zero)
+	if (t->o_plus && !t->o_zero && i != 0)
 		i = i - 1;
-	/*i = ret;*/
 	while (i--)
 		ft_putchar(ch);
-	if (d < 0 && t->o_zero && !t->o_minus)
+	if (d < 0 && t->o_zero && !t->o_minus && !t->prec)
 	{
 		d = -d;
 		ft_putnbr(d);
