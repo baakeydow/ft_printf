@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:26 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 12:59:34 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/11 21:30:23 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int					handle_width_d(int len_conv, t_data *t, intmax_t d, t_conv *c)
 	int			ret;
 
 	ch = ' ';
-	if (t->o_zero && !t->o_minus)
+	if (t->o_zero && !t->o_minus && !t->prec)
 		ch = '0';
 	ok = 0;
 	ret = 0;
@@ -64,6 +64,9 @@ int					handle_width_d(int len_conv, t_data *t, intmax_t d, t_conv *c)
 	i = ret;
 	if (i < 0 || (t->width > t->prec && return_char(c->b_t_conv, '.') && d == 0))
 		return (0);
+	if (t->o_plus && !t->o_zero)
+		i = i - 1;
+	/*i = ret;*/
 	while (i--)
 		ft_putchar(ch);
 	if (d < 0 && t->o_zero && !t->o_minus)
@@ -160,7 +163,7 @@ int					handle_o_space(intmax_t d, t_data *t, t_conv *c)
 	int			ret;
 
 	ret = 0;
-	if ((d >= 0 && !t->o_plus && t->o_space && !c->u) ||
+	if ((d >= 0 && !t->o_plus && t->o_space && !c->u && !t->prec) ||
 			(d == 0 && t->o_zero && t->width && t->prec))
 	{
 		ft_putchar(' ');
