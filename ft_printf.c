@@ -6,11 +6,12 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 23:00:26 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/11 23:56:12 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include <stdio.h>
 
 t_va_arg				tab[TAB_SIZE] = {{&handle_s, 's'},
 	{&handle_s_maj, 'S'}, {&handle_p, 'p'}, {&handle_d, 'd'},
@@ -103,7 +104,11 @@ int						ft_printf(const char *restrict format, ...)
 	/*[>ft_printf("% 10.5d", 4242);<]*/
 	/*[>ft_printf("%+10.5d", 4242);<]*/
 	/*[>ft_printf("%03.2d", -1);<]*/
-	/*ft_printf("@moulitest: %5.d", 0);*/
+	/*[>printf("%.4S", L"我是一只猫。");<]*/
+	/*[>ft_printf("%.4S", L"我是一只猫。");<]*/
+	/*ft_printf("%10.2s", 0);*/
+	/*printf("%10.2s", NULL);*/
+	/*[>printf("%.5C", 42);<]*/
 	/*[>ft_printf("%S", L"米");<]*/
 	/*[>ft_printf("%C", L'猫');<]*/
 	/*[>ft_printf("{%05.c}", 0);<]*/
