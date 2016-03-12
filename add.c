@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 09:33:37 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:05:09 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int					prec_str(t_data *t, char *str, t_conv *c)
 		return (t->prec);
 	}
 	ft_putstr(str);
-	return(ft_strlen(str));
+	return (ft_strlen(str));
 }
 
 int					len_str(t_data *t, char *str, t_conv *c)

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:55 by bndao             #+#    #+#             */
-/*   Updated: 2016/02/25 08:39:22 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 17:58:31 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int						is_not_data(const char *fmt, int *i)
 
 int						false_type(t_conv *c)
 {
-	if (!c->s && !c->S && !c->p && !c->d && !c->D && !c->i && !c->o &&
-			!c->O && !c->u && !c->U && !c->x && !c->X && !c->c && !c->C)
+	if (!c->s && !c->sm && !c->p && !c->d && !c->dm && !c->i && !c->o &&
+			!c->om && !c->u && !c->um && !c->x && !c->xm && !c->c && !c->cm)
 		return (1);
 	return (0);
 }

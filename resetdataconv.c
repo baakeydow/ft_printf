@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:56:25 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/09 00:06:42 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 17:59:16 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ t_conv				*wipe_conv(void)
 		return (NULL);
 	ptr->b_t_conv = NULL;
 	ptr->s = '\0';
-	ptr->S = '\0';
+	ptr->sm = '\0';
 	ptr->p = '\0';
 	ptr->d = '\0';
-	ptr->D = '\0';
+	ptr->dm = '\0';
 	ptr->i = '\0';
 	ptr->o = '\0';
-	ptr->O = '\0';
+	ptr->om = '\0';
 	ptr->u = '\0';
-	ptr->U = '\0';
+	ptr->um = '\0';
 	ptr->x = '\0';
-	ptr->X = '\0';
+	ptr->xm = '\0';
 	ptr->c = '\0';
-	ptr->C = '\0';
+	ptr->cm = '\0';
 	return (ptr);
 }
 

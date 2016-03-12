@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:41 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 23:45:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:33:40 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,18 @@ t_conv					*init_conv(const char *cpy)
 		return (NULL);
 	ptr->b_t_conv = before_t_conv(cpy);
 	ptr->s = return_char(before_t_conv(cpy), 's');
-	ptr->S = return_char(before_t_conv(cpy), 'S');
+	ptr->sm = return_char(before_t_conv(cpy), 'S');
 	ptr->p = return_char(before_t_conv(cpy), 'p');
 	ptr->d = return_char(before_t_conv(cpy), 'd');
-	ptr->D = return_char(before_t_conv(cpy), 'D');
+	ptr->dm = return_char(before_t_conv(cpy), 'D');
 	ptr->i = return_char(before_t_conv(cpy), 'i');
 	ptr->o = return_char(before_t_conv(cpy), 'o');
-	ptr->O = return_char(before_t_conv(cpy), 'O');
+	ptr->om = return_char(before_t_conv(cpy), 'O');
 	ptr->u = return_char(before_t_conv(cpy), 'u');
-	ptr->U = return_char(before_t_conv(cpy), 'U');
+	ptr->um = return_char(before_t_conv(cpy), 'U');
 	ptr->x = return_char(before_t_conv(cpy), 'x');
-	ptr->X = return_char(before_t_conv(cpy), 'X');
+	ptr->xm = return_char(before_t_conv(cpy), 'X');
 	ptr->c = return_char(before_t_conv(cpy), 'c');
-	ptr->C = return_char(before_t_conv(cpy), 'C');
+	ptr->cm = return_char(before_t_conv(cpy), 'C');
 	return (ptr);
 }

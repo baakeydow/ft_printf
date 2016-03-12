@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 03:46:46 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/10 11:58:18 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:33:40 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int					handle_u(va_list conv, t_data *t, t_conv *c)
 	int			ret;
 
 	ret = 0;
-	d = size_uoxX(conv, t, c);
+	d = size_uox(conv, t, c);
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_itoa_ull(d)), t, c);
 	if (!t->o_minus && t->prec)
@@ -42,7 +42,7 @@ int					handle_o(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 1;
-	d = size_uoxX(conv, t, c);
+	d = size_uox(conv, t, c);
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_uitoa_base(d, 8, 'a')) + sharp, t, c);
 	if (t->o_diez && d != 0)
@@ -77,7 +77,7 @@ int					handle_o_maj(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 1;
-	d = size_uoxX(conv, t, c);
+	d = size_uox(conv, t, c);
 	if (!t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_uitoa_base(d, 8, 'A')) + sharp, t, c);
 	if (t->o_diez && d != 0)
@@ -107,7 +107,7 @@ int					handle_x_maj(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 2;
-	d = size_uoxX(conv, t, c);
+	d = size_uox(conv, t, c);
 	if (d == 0 && !t->prec && !t->width && return_char(c->b_t_conv, '.'))
 		return (0);
 	if (!t->o_minus && t->width && !t->o_zero)

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 23:35:59 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 23:45:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:33:40 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,66 +87,6 @@ char			*ft_uitoa_base(uintmax_t nbr, int base, char c)
 	}
 	str_number[i] = '\0';
 	return (ft_strrev(str_number));
-}
-
-static int				binary_to_dec(char *str)
-{
-	int		n;
-
-	n = 0;
-	str = ft_strrev(str);
-	if (str[0] == '1')
-		n = 1;
-	if (str[1] == '1')
-		n += 2;
-	if (str[2] == '1')
-		n += 4;
-	if (str[3] == '1')
-		n += 8;
-	if (str[4] == '1')
-		n += 16;
-	if (str[5] == '1')
-		n += 32;
-	if (str[6] == '1')
-		n += 64;
-	if (str[7] == '1')
-		n += 128;
-	return (ft_atoi(ft_itoa_base(n, 10, 'a')));
-}
-
-char				*ft_nbr_to_char(int nbr, int base, char c)
-{
-	char	*str;
-	int		i;
-	int		fix;
-
-	fix = 0;
-	str = ft_strnew(100);
-	i = 0;
-	if (nbr >= 0)
-		return (ft_itoa_base(nbr, base, c));
-	nbr = -nbr;
-	str = ft_itoa_base(nbr, 2, c);
-	if (ft_strlen(str) < 8)
-	{
-		fix = 8 - ft_strlen(str);
-		while (fix)
-		{
-			str = ft_strjoin("0", str);
-			fix--;
-		}
-	}
-	while (str[i])
-	{
-		if (str[i] == '1')
-			str[i] = '0';
-		else if (str[i] == '0')
-			str[i] = '1';
-		i++;
-	}
-	i = binary_to_dec(str);
-	i = i + 1;
-	return (ft_itoa_base(i, base, c));
 }
 
 char				*ft_widechar_2_reg(wchar_t wide)

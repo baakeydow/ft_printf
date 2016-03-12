@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 23:45:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:33:40 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int					handle_x(va_list conv, t_data *t, t_conv *c)
 	sharp = 0;
 	if (t->o_diez)
 		sharp = 2;
-	d = size_uoxX(conv, t, c);
+	d = size_uox(conv, t, c);
 	if (d == 0 && !t->prec && !t->width && return_char(c->b_t_conv, '.'))
 		return (0);
 	if (!t->o_minus && t->width && !t->o_zero)

@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:55:16 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 23:45:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:33:40 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ typedef struct	s_conv
 {
 	char		*b_t_conv;
 	char		s;
-	char		S;
+	char		sm;
 	char		p;
 	char		d;
-	char		D;
+	char		dm;
 	char		i;
 	char		o;
-	char		O;
+	char		om;
 	char		u;
-	char		U;
+	char		um;
 	char		x;
-	char		X;
+	char		xm;
 	char		c;
-	char		C;
+	char		cm;
 }				t_conv;
 
 typedef struct	s_va_arg
@@ -62,9 +62,9 @@ typedef struct	s_va_arg
 	char		c;
 }				t_va_arg;
 
-t_va_arg		tab[TAB_SIZE];
+struct s_va_arg	tab[TAB_SIZE];
 intmax_t		size_d(va_list conv, t_data *t, t_conv *c);
-uintmax_t		size_uoxX(va_list conv, t_data *t, t_conv *c);
+uintmax_t		size_uox(va_list conv, t_data *t, t_conv *c);
 int				ft_printf(const char *format, ...);
 char			*ft_widechar_2_reg(wchar_t wide);
 char			*ft_widestr_2_reg(wchar_t *src);
@@ -74,7 +74,6 @@ char			*ft_itoa_ll(intmax_t nbr);
 char			*ft_itoa_ull(uintmax_t nbr);
 void			ft_putnbr_u(uintmax_t n);
 void			ft_putnbr_ll(intmax_t n);
-char			*ft_nbr_to_char(int nbr, int base, char c);
 int				find_h(char *str);
 int				find_hh(char *str);
 int				find_l(char *str);
