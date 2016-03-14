@@ -6,12 +6,11 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/12 18:48:28 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/14 14:58:11 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include <stdio.h>
 
 struct s_va_arg	tab[TAB_SIZE] = {{&handle_s, 's'},
 	{&handle_s_maj, 'S'}, {&handle_p, 'p'}, {&handle_d, 'd'},
