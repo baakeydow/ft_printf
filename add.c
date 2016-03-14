@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/12 18:05:09 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/14 16:27:56 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int					null_case_s(t_data *t)
 {
 	int			i;
+	char		*s;
 
 	i = 0;
+	s = "(null)";
 	if (t->o_zero && t->width)
 	{
 		i = t->width;
@@ -24,7 +26,14 @@ int					null_case_s(t_data *t)
 			ft_putchar('0');
 		return (t->width);
 	}
-	ft_putstr("(null)");
+	if (t->prec < (int)ft_strlen(s))
+	{
+		i = t->prec;
+		while (i)
+			ft_putchar(s[i--]);
+		return (t->prec);
+	}
+	ft_putstr(s);
 	return (6);
 }
 

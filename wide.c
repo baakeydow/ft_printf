@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 16:06:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/11 23:45:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/14 16:26:20 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
 
 	ret = 0;
 	if (!(ch = va_arg(conv, wint_t)) && ch != 0)
-		return (null_case());
+		return (null_case_s(t));
 	if (t->prec)
 		return (t->prec);
 	if (t->hh)
