@@ -6,13 +6,13 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 01:00:17 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/14 16:27:56 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/14 20:05:32 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int					null_case_s(t_data *t)
+int					null_case_s(t_data *t, t_conv *c)
 {
 	int			i;
 	char		*s;
@@ -26,7 +26,7 @@ int					null_case_s(t_data *t)
 			ft_putchar('0');
 		return (t->width);
 	}
-	if (t->prec < (int)ft_strlen(s))
+	if (t->prec && return_char(c->b_t_conv, '.') < (int)ft_strlen(s))
 	{
 		i = t->prec;
 		while (i)
