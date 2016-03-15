@@ -1,77 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv.c                                             :+:      :+:    :+:   */
+/*   handle_xpc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/14 20:05:42 by bndao            ###   ########.fr       */
+/*   Created: 2016/03/15 21:34:31 by bndao             #+#    #+#             */
+/*   Updated: 2016/03/15 21:34:56 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-int					handle_s(va_list conv, t_data *t, t_conv *c)
-{
-	char		*str;
-	int			len;
-	int			ret;
-
-	ret = 0;
-	if (t->l)
-		return (handle_s_maj(conv, t, c));
-	if (!(str = va_arg(conv, char *)))
-		return (null_case_s(t, c));
-	len = len_str(t, str, c);
-	if (!t->o_minus && t->width)
-		ret += handle_width(len, t, c);
-	ret += prec_str(t, str, c);
-	if (t->o_minus && t->width)
-		ret += handle_width(len, t, c);
-	return (ret);
-}
-
-int					handle_d(va_list conv, t_data *t, t_conv *c)
-{
-	intmax_t		d;
-	int				been;
-	int				space;
-	int				ret;
-	int				plus;
-
-	ret = 0;
-	plus = 0;
-	space = 0;
-	been = 0;
-	d = size_d(conv, t, c);
-	if (d >= 0 && t->o_plus && (!t->width || t->o_zero))
-	{
-		ft_putchar('+');
-		ret = 1;
-		plus = 1;
-		been = 1;
-	}
-	ret += handle_o_space(d, t, c);
-	if ((ret == 1 && !t->o_plus) || t->o_space)
-		space = 1;
-	if (!t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa_ll(d)) + plus + space, t, d, c);
-	if (d >= 0 && t->o_plus && !t->o_space && !been)
-	{
-		ft_putchar('+');
-		ret += 1;
-		plus = 1;
-	}
-	if (t->prec && d >= 0)
-		ret += handle_o_point(ft_strlen(ft_itoa_ll(d)), t, d);
-	ret += handle_o_zero_d(d, t, c);
-	if (t->o_minus && t->width)
-		ret += handle_width_d(ft_strlen(ft_itoa_ll(d)), t, d, c);
-	if (t->o_plus && !t->o_zero && t->width)
-		ret -= 1;
-	return (ret);
-}
 
 static int			putsharp(void)
 {
