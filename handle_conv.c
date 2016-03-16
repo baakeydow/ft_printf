@@ -12,6 +12,13 @@
 
 #include "printf.h"
 
+static int	n_w_s(t_data *t, t_conv *c)
+{
+	if (c->s || c->sm || c->cm || (c->s && t->l) || (c->c && t->l))
+		return (0);
+	return (1);
+}
+
 int					handle_width(int len, t_data *t, t_conv *c)
 {
 	int			i;
@@ -23,7 +30,7 @@ int					handle_width(int len, t_data *t, t_conv *c)
 			c->sm || c->xm || c->s || c->p || c->u))
 		ch = '0';
 	i = t->width - len;
-	if (t->prec > len && len != 0 && !c->s)
+	if (t->prec > len && len != 0 && !c->s && !c->sm && !c->cm)
 		i = t->width - t->prec;
 	if (i < 0)
 		return (0);
@@ -37,7 +44,7 @@ int					handle_width(int len, t_data *t, t_conv *c)
 		ft_putchar(ch);
 		i--;
 	}
-	return (t->prec > len && !c->s ? t->width - t->prec : t->width - len);
+	return (t->prec > len && n_w_s(t, c) ? t->width - t->prec : t->width - len);
 }
 
 int					handle_width_u(int len, t_data *t, uintmax_t d, t_conv *c)

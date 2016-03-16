@@ -38,12 +38,13 @@ int					handle_s_maj(va_list conv, t_data *t, t_conv *c)
 	ret = 0;
 	if (!(str = va_arg(conv, wchar_t *)))
 		return (s_maj_null(t, c));
-	if (t->prec)
-		return (t->prec);
-	len = len_str(t, ft_widestr_2_reg(str), c);
+	if (!t->prec && !return_char(c->b_t_conv, '.'))
+		len = ft_strlen(ft_widestr_2_reg(str));
+	else
+		len = get_wide_prec(t->prec, str[0]);
 	if (!t->o_minus && t->width)
 		ret += handle_width(len, t, c);
-	ret += prec_str(t, ft_widestr_2_reg(str), c);
+	ret += prec_str_wide(t, len, ft_widestr_2_reg(str), c);
 	if (t->o_minus && t->width)
 		ret += handle_width(len, t, c);
 	return (ret);
@@ -52,18 +53,22 @@ int					handle_s_maj(va_list conv, t_data *t, t_conv *c)
 int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
 {
 	wint_t		ch;
-	int			ret;
+	int				ret;
+	int				len;
 
 	ret = 0;
 	ch = va_arg(conv, wint_t);
 	if (t->hh)
 		return (ft_strlen(ft_widechar_2_reg(ch)));
+	if (!t->prec && !return_char(c->b_t_conv, '.'))
+		len = ft_strlen(ft_widechar_2_reg(ch));
+	else
+		len = get_wide_prec(t->prec, ch);
 	if (!t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_widechar_2_reg(ch)), t, c);
-	ft_putstr(ft_widechar_2_reg(ch));
-	ret += ch == 0 ? 1 : ft_strlen(ft_widechar_2_reg(ch));
+		ret += handle_width(len, t, c);
+	ret += ch == 0 ? 1 : prec_str_wide(t, len, ft_widechar_2_reg(ch), c);
 	if (t->o_minus && t->width)
-		ret += handle_width(ft_strlen(ft_widechar_2_reg(ch)), t, c);
+		ret += handle_width(len, t, c);
 	return (ret);
 }
 

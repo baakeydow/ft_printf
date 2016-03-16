@@ -100,6 +100,8 @@ char			find_o_zero(char *fmt);
 int				find_width(char *str);
 int				find_prec(char *str);
 int				prec_str(t_data *t, char *str, t_conv *c);
+int				prec_str_wide(t_data *t, int len, char *str, t_conv *c);
+int				get_wide_prec(int prec, wchar_t wide);
 int				len_str(t_data *t, char *str, t_conv *c);
 int				handle_false_type(t_conv *c, t_data *t);
 int				handle_width_d(int len, t_data *t, intmax_t d, t_conv *c);
