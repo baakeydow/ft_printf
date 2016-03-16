@@ -44,39 +44,3 @@ int					len_str(t_data *t, char *str, t_conv *c)
 		return (t->prec);
 	return ((int)ft_strlen(str));
 }
-
-void				ft_putnbr_u(uintmax_t n)
-{
-	if (n > ULONG_MAX)
-		ft_putstr("18446744073709551615");
-	if (n > 9)
-	{
-		ft_putnbr_u(n / 10);
-		ft_putnbr_u(n % 10);
-	}
-	else
-		ft_putchar(48 + n);
-}
-
-void				ft_putnbr_ll(intmax_t n)
-{
-	if (n > LLONG_MAX)
-		ft_putstr("-1");
-	if (n <= LLONG_MIN)
-	{
-		ft_putstr("-9");
-		n = 223372036854775808;
-	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n > 9)
-	{
-		ft_putnbr_ll(n / 10);
-		ft_putnbr_ll(n % 10);
-	}
-	else
-		ft_putchar(48 + n);
-}

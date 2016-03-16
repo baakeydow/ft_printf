@@ -6,13 +6,13 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:54:49 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/15 23:10:29 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/16 02:06:33 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int					handle_s(va_list conv, t_data *t, t_conv *c)
+int							handle_s(va_list conv, t_data *t, t_conv *c)
 {
 	char		*str;
 	int			len;
@@ -32,7 +32,7 @@ int					handle_s(va_list conv, t_data *t, t_conv *c)
 	return (ret);
 }
 
-static int	prec_zero_width(intmax_t d, t_data *t, t_conv *c)
+static int					prec_zero_width(intmax_t d, t_data *t, t_conv *c)
 {
 	int			ret;
 
@@ -47,10 +47,10 @@ static int	prec_zero_width(intmax_t d, t_data *t, t_conv *c)
 	return (ret);
 }
 
-int					handle_d(va_list conv, t_data *t, t_conv *c)
+int							handle_d(va_list conv, t_data *t, t_conv *c)
 {
 	intmax_t		d;
-	int					n[4];
+	int				n[4];
 
 	n[0] = 0;
 	n[1] = 0;
@@ -76,10 +76,10 @@ int					handle_d(va_list conv, t_data *t, t_conv *c)
 	return (n[0]);
 }
 
-int					handle_u(va_list conv, t_data *t, t_conv *c)
+int							handle_u(va_list conv, t_data *t, t_conv *c)
 {
-	uintmax_t	d;
-	int			ret;
+	uintmax_t		d;
+	int				ret;
 
 	ret = 0;
 	d = size_uox(conv, t, c);

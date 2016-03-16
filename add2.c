@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 01:51:59 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/16 01:52:14 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/16 02:08:40 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,33 @@ int					find_z(char *str)
 		i++;
 	}
 	return (0);
+}
+
+static char			*str_length(char **str, size_t *i, int *rem)
+{
+	*i = 0;
+	*rem = 0;
+	if (!((*str) = (char *)malloc(sizeof(char) * 20)))
+		return (NULL);
+	return (*str);
+}
+
+char				*ft_uitoa_base(uintmax_t nbr, int base, char c)
+{
+	int		d;
+	size_t	i;
+	char	*str_number;
+
+	if (!(str_length(&str_number, &i, &d)))
+		return (NULL);
+	if (nbr == 0)
+		return (ft_strdup("0"));
+	while (nbr)
+	{
+		d = nbr % base;
+		str_number[i++] = (d > 9) ? (d - 10) + c : d + '0';
+		nbr = nbr / base;
+	}
+	str_number[i] = '\0';
+	return (ft_strrev(str_number));
 }

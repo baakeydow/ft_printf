@@ -59,3 +59,18 @@ uintmax_t				size_uox(va_list conv, t_data *t, t_conv *c)
 		nbr = va_arg(conv, size_t);
 	return (nbr);
 }
+
+int				handle_d_maj(va_list conv, t_data *t, t_conv *c)
+{
+	return (handle_d(conv, t, c));
+}
+
+int				handle_i(va_list conv, t_data *t, t_conv *c)
+{
+	return (handle_d(conv, t, c));
+}
+
+int				handle_u_maj(va_list conv, t_data *t, t_conv *c)
+{
+	return (handle_u(conv, t, c));
+}

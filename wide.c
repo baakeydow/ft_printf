@@ -6,13 +6,13 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 16:06:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/14 20:10:24 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/16 02:07:31 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int	s_maj_null(t_data *t, t_conv *c)
+static int			s_maj_null(t_data *t, t_conv *c)
 {
 	char		*str;
 	int			len;
@@ -98,7 +98,7 @@ char				*ft_widechar_2_reg(wchar_t wide)
 char				*ft_widestr_2_reg(wchar_t *src)
 {
 	char	*str;
-	char 	*ante;
+	char	*ante;
 	char	*post;
 
 	if (!(str = ft_strnew(0)))

@@ -89,6 +89,7 @@ PTF += handle_o.c
 PTF += miscellaneous.c
 PTF += resetdataconv.c
 PTF += ft_itoa_base.c
+PTF += ft_itoa_base_ll.c
 PTF += add.c
 PTF += add2.c
 PTF += wide.c

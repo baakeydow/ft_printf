@@ -37,21 +37,6 @@ int				handle(va_list f, t_va_arg tab[TAB_SIZE], t_data *t, t_conv *c)
 	return (0);
 }
 
-int				handle_d_maj(va_list conv, t_data *t, t_conv *c)
-{
-	return (handle_d(conv, t, c));
-}
-
-int				handle_i(va_list conv, t_data *t, t_conv *c)
-{
-	return (handle_d(conv, t, c));
-}
-
-int				handle_u_maj(va_list conv, t_data *t, t_conv *c)
-{
-	return (handle_u(conv, t, c));
-}
-
 int				ft_printf(const char *restrict format, ...)
 {
 	va_list		conv;
