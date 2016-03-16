@@ -3,7 +3,7 @@
 
 int				main(void)
 {
-   /* char	str[]= "%.3S\n";*/
+	char	str[]= "{% C}\n";
 	char	str2[]= "%15.4S\n";
 	char	str3[]= "%.5C\n";
 	char	str4[]= "%.2s\n";
@@ -29,6 +29,10 @@ int				main(void)
 	ft_printf("------------------------\n\n");
 	ret = printf(str2, L"我是一只猫。");
 	ret2 = ft_printf(str2, L"我是一只猫。");
+	ft_printf("real = %d : mine = %d\n\n", ret, ret2);
+	ft_printf("------------------------\n\n");
+	ret = printf(str, 0);
+	ret2 = ft_printf(str, 0);
 	ft_printf("real = %d : mine = %d\n\n", ret, ret2);
 	ft_printf("------------------------\n\n");
 	return (0);
