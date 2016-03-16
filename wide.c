@@ -12,6 +12,23 @@
 
 #include "printf.h"
 
+static int	s_maj_null(t_data *t, t_conv *c)
+{
+	char		*str;
+	int			len;
+	int			ret;
+
+	ret = 0;
+	str = "(null)";
+	len = len_str(t, str, c);
+	if (!t->o_minus && t->width)
+		ret += handle_width(len, t, c);
+	ret += prec_str(t, str, c);
+	if (t->o_minus && t->width)
+		ret += handle_width(len, t, c);
+	return (ret);
+}
+
 int					handle_s_maj(va_list conv, t_data *t, t_conv *c)
 {
 	wchar_t		*str;
@@ -20,7 +37,7 @@ int					handle_s_maj(va_list conv, t_data *t, t_conv *c)
 
 	ret = 0;
 	if (!(str = va_arg(conv, wchar_t *)))
-		return (null_case_s(t, c));
+		return (s_maj_null(t, c));
 	if (t->prec)
 		return (t->prec);
 	len = len_str(t, ft_widestr_2_reg(str), c);
@@ -38,10 +55,7 @@ int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
 	int			ret;
 
 	ret = 0;
-	if (!(ch = va_arg(conv, wint_t)) && ch != 0)
-		return (null_case_s(t, c));
-	if (t->prec)
-		return (t->prec);
+	ch = va_arg(conv, wint_t);
 	if (t->hh)
 		return (ft_strlen(ft_widechar_2_reg(ch)));
 	if (!t->o_minus && t->width)
@@ -51,4 +65,54 @@ int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
 	if (t->o_minus && t->width)
 		ret += handle_width(ft_strlen(ft_widechar_2_reg(ch)), t, c);
 	return (ret);
+}
+
+char				*ft_widechar_2_reg(wchar_t wide)
+{
+	char	str[5];
+
+	ft_bzero(str, 5);
+	if (wide < 128)
+		str[0] = (char)wide;
+	else if (wide < 2048)
+	{
+		str[0] = (wide >> 6) + 192;
+		str[1] = (wide & 63) + 128;
+	}
+	else if (wide < 65536)
+	{
+		str[0] = (wide >> 12) + 224;
+		str[1] = ((wide >> 6) & 63) + 128;
+		str[2] = (wide & 63) + 128;
+	}
+	else if (wide < 1114112)
+	{
+		str[0] = (wide >> 18) + 240;
+		str[1] = ((wide >> 12) & 63) + 128;
+		str[2] = ((wide >> 6) & 63) + 128;
+		str[3] = (wide & 63) + 128;
+	}
+	return (ft_strdup(str));
+}
+
+char				*ft_widestr_2_reg(wchar_t *src)
+{
+	char	*str;
+	char 	*ante;
+	char	*post;
+
+	if (!(str = ft_strnew(0)))
+		return (NULL);
+	while (*src)
+	{
+		ante = str;
+		if (!(post = ft_widechar_2_reg(*src)))
+			return (NULL);
+		if (!(str = ft_strjoin(ante, post)))
+			return (NULL);
+		src++;
+		ft_strdel(&ante);
+		ft_strdel(&post);
+	}
+	return (str);
 }

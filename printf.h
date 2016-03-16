@@ -96,7 +96,6 @@ int				is_b_t_conv(const char *fmt, int *i);
 char			*get(const char *fmt);
 char			return_char(char *fmt, char c);
 int				null_case(void);
-int				null_case_s(t_data *t, t_conv *c);
 char			find_o_zero(char *fmt);
 int				find_width(char *str);
 int				find_prec(char *str);

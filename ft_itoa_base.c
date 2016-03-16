@@ -89,56 +89,6 @@ char			*ft_uitoa_base(uintmax_t nbr, int base, char c)
 	return (ft_strrev(str_number));
 }
 
-char				*ft_widechar_2_reg(wchar_t wide)
-{
-	char	str[5];
-
-	ft_bzero(str, 5);
-	if (wide < 128)
-		str[0] = (char)wide;
-	else if (wide < 2048)
-	{
-		str[0] = (wide >> 6) + 192;
-		str[1] = (wide & 63) + 128;
-	}
-	else if (wide < 65536)
-	{
-		str[0] = (wide >> 12) + 224;
-		str[1] = ((wide >> 6) & 63) + 128;
-		str[2] = (wide & 63) + 128;
-	}
-	else if (wide < 1114112)
-	{
-		str[0] = (wide >> 18) + 240;
-		str[1] = ((wide >> 12) & 63) + 128;
-		str[2] = ((wide >> 6) & 63) + 128;
-		str[3] = (wide & 63) + 128;
-	}
-	return (ft_strdup(str));
-}
-
-char				*ft_widestr_2_reg(wchar_t *src)
-{
-	char	*str;
-	char 	*ante;
-	char	*post;
-
-	if (!(str = ft_strnew(0)))
-		return (NULL);
-	while (*src)
-	{
-		ante = str;
-		if (!(post = ft_widechar_2_reg(*src)))
-			return (NULL);
-		if (!(str = ft_strjoin(ante, post)))
-			return (NULL);
-		src++;
-		ft_strdel(&ante);
-		ft_strdel(&post);
-	}
-	return (str);
-}
-
 static char		*ft_z_or_m(intmax_t number)
 {
 	char	*str;

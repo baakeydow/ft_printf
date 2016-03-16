@@ -12,31 +12,6 @@
 
 #include "printf.h"
 
-int					null_case_s(t_data *t, t_conv *c)
-{
-	int			i;
-	char		*s;
-
-	i = 0;
-	s = "(null)";
-	if (t->o_zero && t->width)
-	{
-		i = t->width;
-		while (i--)
-			ft_putchar('0');
-		return (t->width);
-	}
-	if (t->prec && return_char(c->b_t_conv, '.') < (int)ft_strlen(s))
-	{
-		i = t->prec;
-		while (i)
-			ft_putchar(s[i--]);
-		return (t->prec);
-	}
-	ft_putstr(s);
-	return (6);
-}
-
 int					prec_str(t_data *t, char *str, t_conv *c)
 {
 	int			i;
@@ -104,18 +79,4 @@ void				ft_putnbr_ll(intmax_t n)
 	}
 	else
 		ft_putchar(48 + n);
-}
-
-int					find_z(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == 'z')
-			return (1);
-		i++;
-	}
-	return (0);
 }
