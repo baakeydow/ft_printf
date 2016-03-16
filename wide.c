@@ -58,8 +58,6 @@ int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
 
 	ret = 0;
 	ch = va_arg(conv, wint_t);
-	if (t->hh)
-		return (ft_strlen(ft_widechar_2_reg(ch)));
 	if (!t->prec && !return_char(c->b_t_conv, '.'))
 		len = ft_strlen(ft_widechar_2_reg(ch));
 	else

@@ -4,6 +4,7 @@
 int				main(void)
 {
 	char	str[]= "{% C}\n";
+	char	str5[]= "{%hhC}\n";
 	char	str2[]= "%15.4S\n";
 	char	str3[]= "%.5C\n";
 	char	str4[]= "%.2s\n";
@@ -33,6 +34,10 @@ int				main(void)
 	ft_printf("------------------------\n\n");
 	ret = printf(str, 0);
 	ret2 = ft_printf(str, 0);
+	ft_printf("real = %d : mine = %d\n\n", ret, ret2);
+	ft_printf("------------------------\n\n");
+	ret = printf(str5, L'米');
+	ret2 = ft_printf(str5, L'米');
 	ft_printf("real = %d : mine = %d\n\n", ret, ret2);
 	ft_printf("------------------------\n\n");
 	return (0);
