@@ -6,7 +6,7 @@
 /*   By: bndao <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 16:06:33 by bndao             #+#    #+#             */
-/*   Updated: 2016/03/16 02:07:31 by bndao            ###   ########.fr       */
+/*   Updated: 2016/03/18 10:26:44 by bndao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ int					handle_c_maj(va_list conv, t_data *t, t_conv *c)
 		len = get_wide_prec(t->prec, ch);
 	if (!t->o_minus && t->width)
 		ret += handle_width(len, t, c);
-	ret += ch == 0 ? 1 : prec_str_wide(t, len, ft_widechar_2_reg(ch), c);
+	if (ch == 0)
+		ret += write(1, &ch, 1);
+	else
+		ret += prec_str_wide(t, len, ft_widechar_2_reg(ch), c);
 	if (t->o_minus && t->width)
 		ret += handle_width(len, t, c);
 	return (ret);
